@@ -16,6 +16,7 @@ render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
+        <Route path="/auth/failure" component={Home}/>
         <Route path="*" component={NotFound}/>
       </Route>
     </Router>
