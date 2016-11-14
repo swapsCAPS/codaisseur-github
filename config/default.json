@@ -8,6 +8,7 @@
       "secret": "cdnFQSvsERwWU3yNrlrxPlWfJM4+NmA+A4I2jWUPonefFgVW5at8Jm6N79M23xzEWrzAl41Z/6/JQ3mxF45syg=="
     },
     "local": false,
+    "shouldSetupSuccessRoute": true,
     "github": {
       "clientID": "CODAISEUR_GH_CLIENT_ID",
       "clientSecret": "CODAISEUR_GH_CLIENT_SECRET",
