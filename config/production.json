@@ -7,6 +7,13 @@
     "token": {
       "secret": "FEATHERS_AUTH_SECRET"
     },
-    "local": {}
+    "local": false,
+    "github": {
+      "clientID": "CODAISEUR_GH_CLIENT_ID",
+      "clientSecret": "CODAISEUR_GH_CLIENT_SECRET",
+      "permissions": {
+        "scope": []
+      }
+    }
   }
 }

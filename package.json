@@ -1,6 +1,6 @@
 {
-  "name": "MemoryGame",
-  "description": "Multiplayer Memory Game with React and FeathersJS.",
+  "name": "CodaisseurGithub",
+  "description": "A quick overview of your beloved Github friends",
   "version": "0.0.0",
   "homepage": "",
   "main": "src/",
@@ -38,6 +38,8 @@
     "material-ui": "^0.15.4",
     "mongoose": "^4.6.0",
     "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-github-token": "^2.1.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
