@@ -1,4 +1,4 @@
-import { SET_GITHUB_TOKEN } from '../actions/set-current-user'
+import { SET_GITHUB_TOKEN } from '../actions/authentication'
 
 export default (state = localStorage.getItem('feathers-jwt') || null, { type, payload } = {}) => {
   switch(type){

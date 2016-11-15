@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from '../actions/set-current-user'
+import { SET_CURRENT_USER } from '../actions/authentication'
 
 export default (state = {}, { type, payload } = {}) => {
   switch(type) {

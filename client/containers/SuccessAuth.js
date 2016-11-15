@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { history } from '../store'
-import { authenticate } from '../actions/set-current-user'
+import { authenticate } from '../actions/authentication'
 
 class SuccessAuth extends Component {
   componentWillMount() {

@@ -6,6 +6,7 @@ export function authenticate() {
     api.authenticate()
       .then((response) => {
         dispatch(setCurrentUser(response.data))
+        dispatch(setGithubToken(response.token))
         history.push('/')
       })
       .catch((error) => {
