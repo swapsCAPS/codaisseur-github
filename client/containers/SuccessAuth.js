@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import api from '../middleware/api'
+import { connect } from 'react-redux'
+import { history } from '../store'
+import { authenticate } from '../actions/set-current-user'
 
 class SuccessAuth extends Component {
   componentWillMount() {
-    api.authenticate();
+    this.props.authenticate()
   }
 
   render() {
@@ -14,4 +16,4 @@ class SuccessAuth extends Component {
   }
 }
 
-export default SuccessAuth
+export default connect(null, { authenticate })(SuccessAuth)

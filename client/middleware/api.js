@@ -23,12 +23,6 @@ class API {
 
   authenticate() {
     return this.app.authenticate()
-      .then(function(result) {
-
-        console.log('Authenticated!', result);
-      }).catch(function(error) {
-        console.error('Error authenticating!', error);
-      });
   }
 
   signOut() {
