@@ -2,14 +2,26 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import Paper from 'material-ui/Paper'
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
+import {fullWhite} from 'material-ui/styles/colors';
 
 import api from '../middleware/api'
+
+import './SignIn.sass'
 
 class SignIn extends Component {
 
   render() {
     return(
-      <Paper className="sign-in">
+      <Paper className="sign-in" zDepth={3}>
+        <h1>Login:</h1>
+        <RaisedButton
+          className="button"
+          label="GitHub"
+          labelPosition="before"
+          href="/auth/github"
+          primary={true} />
       </Paper>
     )
   }

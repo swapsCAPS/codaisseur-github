@@ -2,31 +2,22 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader';
 
-import { getFollowing } from '../actions/get-following'
-
 import GHListItem from '../components/GHListItem'
-import FlatButton from 'material-ui/FlatButton';
-import FontIcon from 'material-ui/FontIcon';
-import Avatar from 'material-ui/Avatar';
-import SetUsername from '../components/SetUsername'
 
-const style = {
-  marginLeft: 24,
-  marginRight: 24,
-}
+import { getFollowing } from '../actions/get-following'
 
 class GHList extends Component {
 
   componentDidMount() {
-    this.props.getFollowing()
+    const { getFollowing, currentUser } = this.props
+    getFollowing(currentUser.login)
   }
 
   render() {
     const { following } = this.props
 
     return(
-      <div style={style} className="gh-list">
-        <SetUsername />
+      <div className="gh-list">
         <Subheader>Following</Subheader>
         {
           following.map((f, key) => {
@@ -40,7 +31,8 @@ class GHList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    following: state.following
+    following: state.following,
+    currentUser: state.currentUser.github
   }
 }
 
