@@ -1,5 +1,5 @@
-import { authStateReducer } from 'redux-auth';
+import token from './token'
 
 module.exports = {
-  auth: authStateReducer
+  token
 }

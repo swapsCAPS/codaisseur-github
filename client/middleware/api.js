@@ -13,6 +13,7 @@ class API {
       // Use localStorage to store our login token
       .configure(feathers.authentication({
         storage: window.localStorage,
+        cookie: 'codaisseur-github-stroopwafel',
       }));
   }
 
@@ -21,16 +22,13 @@ class API {
   }
 
   authenticate() {
-    return this.app.authenticate({
-      type: 'token',
-      endpoint: '/auth/github',
-      'token': this.app.get('token') ? this.app.get('token') : 'notoken'
-    }).then(function(result) {
-      console.log('Authenticated!', this.app.get('token'));
-    }).catch(function(error) {
-      console.error('Error authenticating!', error);
-      // TODO redirect to /auth/github ?
-    });
+    return this.app.authenticate()
+      .then(function(result) {
+
+        console.log('Authenticated!', result);
+      }).catch(function(error) {
+        console.error('Error authenticating!', error);
+      });
   }
 
   signOut() {

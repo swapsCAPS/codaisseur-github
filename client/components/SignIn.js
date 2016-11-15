@@ -1,15 +1,31 @@
 import React, { Component, PropTypes } from 'react'
-import { OAuthSignInButton } from 'redux-auth/material-ui-theme'
+import { connect } from 'react-redux'
+import api from '../middleware/api'
 
 class SignIn extends Component {
+  componentWillMount(){
+  }
+
+  componentDidMount(){
+  }
 
   render() {
     return(
       <div className="sign-in">
-        <OAuthSignInButton provider='github' />
+        {
+          this.props.token ?
+          <span>{this.props.token}</span> :
+          <a href="/auth/github/">Sign in with Github</a>
+        }
       </div>
     )
   }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+  return {
+    token: state.token
+  }
+}
+
+export default connect(mapStateToProps, {})(SignIn)

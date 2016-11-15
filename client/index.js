@@ -7,6 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import App from './App'
 import Home from './containers/Home'
+import SuccessAuth from './containers/SuccessAuth'
 import NotFound from './containers/NotFound'
 
 injectTapEventPlugin()
@@ -17,6 +18,7 @@ render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="/auth/failure" component={Home}/>
+        <Route path="/auth/success" component={SuccessAuth}/>
         <Route path="*" component={NotFound}/>
       </Route>
     </Router>
