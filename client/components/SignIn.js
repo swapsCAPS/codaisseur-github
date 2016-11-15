@@ -1,35 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+
+import Paper from 'material-ui/Paper'
+
 import api from '../middleware/api'
 
 class SignIn extends Component {
-  renderUser(user){
-    return (
-      ( user.login )
-    )
-  }
-
-  componentWillMount(){
-  }
-
-  componentDidMount(){
-  }
-
-  logOut(){
-    api.signOut()
-  }
 
   render() {
     return(
-      <div>
-        <div className="sign-in">
-        {
-          this.props.token ?
-          <span>{this.props.token}</span> :
-          <a href="/auth/github/">Sign in with Github</a>
-        }
-        </div>
-      </div>
+      <Paper className="sign-in">
+      </Paper>
     )
   }
 }
