@@ -16,21 +16,21 @@ class GHList extends Component {
 
   setOrderBy(event, index, orderBy) {
     this.setState({orderBy})
-    this.sort(this.state.asc)
+    this.sort(orderBy, this.state.asc)
   }
 
   setAscDesc(event, index, asc){
     this.setState({asc})
-    this.sort(asc)
+    this.sort(this.state.orderBy, asc)
   }
 
-  sort(asc){
+  sort(orderBy = 1, asc = true){
     const { sortFollowing } = this.props
-    switch(this.state.orderBy){
+    switch(orderBy){
       case 1:
         return sortFollowing('login', asc)
       case 2:
-        return sortFollowing('repoAmount', asc)
+        return sortFollowing('publicRepos', asc)
     }
   }
 
@@ -51,7 +51,7 @@ class GHList extends Component {
           onChange={this.setOrderBy.bind(this)}
         >
           <MenuItem value={1} primaryText="Username" />
-          <MenuItem value={2} primaryText="Repo amount" />
+          <MenuItem value={2} primaryText="Public repos" />
         </SelectField>
         <SelectField
           floatingLabelText="Sort"

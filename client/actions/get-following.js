@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 export const SORT_FOLLOWING = 'SORT_FOLLOWING'
-export function sortFollowing(orderBy, asc = true) {
+export function sortFollowing(orderBy = 'login', asc = true) {
   return {
     type: SORT_FOLLOWING,
     payload: { orderBy, asc }
@@ -19,16 +19,43 @@ export function getFollowing(username) {
         return response.json();
       })
       .then(function(following) {
-        dispatch({
+        return dispatch({
           type: GET_FOLLOWING,
           payload: following
         })
       })
       .then(function() {
         getState().following.map((user) => {
-          return dispatch(getRepos(user))
+          // Get ALL THE REPOS
+          dispatch(getRepos(user))
+          // Get full user object from github api.
+          // https://api.github.com/users/<username>/following
+          // gives nerfed representation
+          dispatch(getFullUser(user))
         })
       })
+  }
+}
+
+export const GET_FULL_USER = 'GET_FULL_USER'
+export function getFullUser(user) {
+  return (dispatch, getState) => {
+    return fetch(user.url)
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new error('bad response from server');
+        }
+        return response.json();
+      })
+      .then(function(fullUser) {
+        return dispatch({
+          type: GET_FULL_USER,
+          payload: {
+            user,
+            fullUser
+          }
+        })
+      });
   }
 }
 

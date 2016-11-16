@@ -1,17 +1,22 @@
-import { GET_FOLLOWING, SORT_FOLLOWING } from '../actions/get-following'
+import { GET_FOLLOWING, GET_FULL_USER, SORT_FOLLOWING } from '../actions/get-following'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
     case GET_FOLLOWING:
       return sortByLogin(payload)
+    case GET_FULL_USER:
+      return state.map((user) => {
+        if(user.id === payload.fullUser.id) return payload.fullUser
+        return user
+      })
     case SORT_FOLLOWING:
       switch(payload.orderBy){
         case 'login':
           if(payload.asc) return sortByLogin(state)
           return sortByLogin(state).reverse()
-        case 'repoAmount':
-          if(payload.asc) return sortByLogin(state)
-          return sortByLogin(state).reverse()
+        case 'publicRepos':
+          if(payload.asc) return sortByPublicRepos(state)
+          return sortByPublicRepos(state).reverse()
         default:
           return state
       }
@@ -28,8 +33,8 @@ const sortByLogin = (array) => {
   })
 }
 
-const sortByRepoAmount = (array) => {
+const sortByPublicRepos = (array) => {
   return array.sort((a, b) => {
-    return b.repos.length - a.repos.length
+    return b.public_repos - a.public_repos
   })
 }

@@ -16,10 +16,20 @@
 
   .content-container
     width: 100%
-    padding: 4px
 
     .info-container
-      display: inline-block
+      margin: 4px
+      display: flex
+      flex-direction: column
+      width: 150px
+      height: 100%
+      background: #ccc
 
-      .type
-        min-width: 80px
+      .info-wrapper
+        display: inline
+        .type
+          width: 100px
+          display: inline
+        .info
+          min-width: 80px
+          display: inline

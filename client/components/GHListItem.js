@@ -21,6 +21,10 @@ class GHListItem extends Component {
         </div>
         <div className="content-container">
           <div className="info-container">
+            <div className="info-wrapper">
+              <span className="type">Public repos:</span>
+              <span className="info">{user.public_repos}</span>
+            </div>
           </div>
         </div>
       </Paper>
