@@ -22,6 +22,14 @@ class GHListItem extends Component {
         <div className="content-container">
           <div className="info-container">
             <div className="info-wrapper">
+              <span className="type">Name:</span>
+              <span className="info">{user.name ? user.name : 'Name unknown'}</span>
+            </div>
+            <div className="info-wrapper">
+              <span className="type">Email:</span>
+              <span className="info">{user.email ? user.email : 'Email unknown'}</span>
+            </div>
+            <div className="info-wrapper">
               <span className="type">Public repos:</span>
               <span className="info">{user.public_repos}</span>
             </div>

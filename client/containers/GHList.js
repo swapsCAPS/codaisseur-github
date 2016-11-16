@@ -44,7 +44,6 @@ class GHList extends Component {
 
     return(
       <div className="gh-list">
-        <Subheader>Following</Subheader>
         <SelectField
           floatingLabelText="Order by"
           value={this.state.orderBy}
