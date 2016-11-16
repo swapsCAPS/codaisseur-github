@@ -21,6 +21,14 @@ class GHListItem extends Component {
         </div>
         <div className="content-container">
           <div className="info-container">
+            <div className="info-line">
+              <span className="type">Repo amount:</span>
+              <span className="info">{user.repos.length}</span>
+            </div>
+            <div className="info-line">
+              <span className="type">Latest repo</span>
+              <span className="info">{user.repos[user.repos.length - 1].name}</span>
+            </div>
           </div>
         </div>
       </Paper>

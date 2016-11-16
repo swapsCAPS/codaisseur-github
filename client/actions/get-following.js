@@ -27,7 +27,7 @@ export function getFollowing(username) {
         return dispatch(sortFollowing())
       })
       .then(function(following) {
-        return getState().following.map((user) => {
+        getState().following.map((user) => {
           dispatch(getRepos(user))
         })
       })

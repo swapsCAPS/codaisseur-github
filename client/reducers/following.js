@@ -5,14 +5,14 @@ export default (state = [], { type, payload } = {}) => {
     case GET_FOLLOWING:
       return payload
     case SORT_FOLLOWING:
-      return sort(state)
+      return sortByLogin(state)
     case GET_REPOS:
-      return state.map((user) => {
+      return sortReposByCreatedAt(state.map((user) => {
         if(user.id === payload.user.id) {
           return Object.assign({}, user, {repos: payload.repositories})
         }
         return user
-      })
+      }))
     case GET_REPO_EVENTS:
       return state.map((user) => {
         if(user.id === payload.user.id) {
@@ -31,10 +31,18 @@ export default (state = [], { type, payload } = {}) => {
   }
 }
 
-const sort = (array) => {
+const sortByLogin = (array) => {
   return array.sort((a, b) => {
     if(a.login.toLowerCase() > b.login.toLowerCase()) return 1
     if(a.login.toLowerCase() < b.login.toLowerCase()) return -1
+    return 0
+  })
+}
+
+const sortReposByCreatedAt = (array) => {
+  return array.sort((a, b) => {
+    if(a.created_at > b.created_at) return 1
+    if(a.created_at < b.created_at) return -1
     return 0
   })
 }
