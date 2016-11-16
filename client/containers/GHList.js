@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-
 import GHListItem from '../components/GHListItem'
+
+import './GHList.sass'
 
 import { getFollowing, sortFollowing } from '../actions/get-following'
 
@@ -44,28 +45,30 @@ class GHList extends Component {
 
     return(
       <div className="gh-list">
-        <SelectField
-          floatingLabelText="Order by"
-          value={this.state.orderBy}
-          onChange={this.setOrderBy.bind(this)}
-        >
-          <MenuItem value={1} primaryText="Username" />
-          <MenuItem value={2} primaryText="Public repos" />
-        </SelectField>
-        <SelectField
-          floatingLabelText="Sort"
-          value={this.state.asc}
-          onChange={this.setAscDesc.bind(this)}
-        >
-          <MenuItem value={true} primaryText="Ascending" />
-          <MenuItem value={false} primaryText="Descending" />
-        </SelectField>
-        {
+        <div className="orderby-wrapper">
+          <SelectField
+            style={{marginRight: 8, width: 138}}
+            floatingLabelText="Order by"
+            value={this.state.orderBy}
+            onChange={this.setOrderBy.bind(this)}
+          >
+            <MenuItem value={1} primaryText="Username" />
+            <MenuItem value={2} primaryText="Public repos" />
+          </SelectField>
+          <SelectField
+            style={{width: 120}}
+            floatingLabelText="Sort"
+            value={this.state.asc}
+            onChange={this.setAscDesc.bind(this)}
+          >
+            <MenuItem value={true} primaryText="Ascending" />
+            <MenuItem value={false} primaryText="Descending" />
+          </SelectField>
+        </div>{
           following.map((f, key) => {
             return <GHListItem user={f} key={key} />
           })
-        }
-      </div>
+        }</div>
     )
   }
 }

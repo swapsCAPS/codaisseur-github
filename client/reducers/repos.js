@@ -4,19 +4,6 @@ export default (state = [], { type, payload } = {}) => {
   switch(type) {
     case GET_REPOS:
       return state.concat(payload)
-    case GET_REPO_EVENTS:
-      return state.map((user) => {
-        if(user.id === payload.user.id) {
-          user.repos.map((repo) => {
-            if(repo.id === payload.repo.id) {
-              return Object.assign({}, repo, {events: payload.events})
-            }
-            return repo
-          })
-          return Object.assign({}, user, {repos: payload.repositories})
-        }
-        return user
-      })
     default:
       return state
   }

@@ -15,6 +15,7 @@ class API {
         storage: window.localStorage,
         cookie: 'codaisseur-github-stroopwafel',
       }));
+    this.token = this.app.get('token')
   }
 
   service(serviceName) {
@@ -28,6 +29,7 @@ class API {
   signOut() {
     return this.app.logout()
   }
+
 }
 
 const Api = new API()
