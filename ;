@@ -10,31 +10,22 @@ import { getFollowing, sortFollowing } from '../actions/get-following'
 
 class GHList extends Component {
   state = {
-    orderBy: 1,
-    asc: true
+    orderBy: 1
   }
 
-  setOrderBy(event, index, orderBy) {
-    this.setState({orderBy})
-    this.sort(this.state.asc)
-  }
-
-  setAscDesc(event, index, asc){
-    this.setState({asc})
-    this.sort(asc)
-  }
-
-  sort(asc){
-    const { sortFollowing } = this.props
+  setOrderBy() {
+    let { sortFollowing } = this.props
     switch(this.state.orderBy){
       case 1:
-        return sortFollowing('login', asc)
+        sortFollowing('login')
       case 2:
-        return sortFollowing('repoAmount', asc)
+        sortFollowing('repoAmount')
+      default:
+        sortFollowing('login')
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getFollowing, currentUser } = this.props
     getFollowing(currentUser.login)
   }
@@ -48,18 +39,10 @@ class GHList extends Component {
         <SelectField
           floatingLabelText="Order by"
           value={this.state.orderBy}
-          onChange={this.setOrderBy.bind(this)}
+          onChange={this.setOrderBy}
         >
           <MenuItem value={1} primaryText="Username" />
           <MenuItem value={2} primaryText="Repo amount" />
-        </SelectField>
-        <SelectField
-          floatingLabelText="Sort"
-          value={this.state.asc}
-          onChange={this.setAscDesc.bind(this)}
-        >
-          <MenuItem value={true} primaryText="Ascending" />
-          <MenuItem value={false} primaryText="Descending" />
         </SelectField>
         {
           following.map((f, key) => {

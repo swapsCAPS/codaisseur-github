@@ -1,9 +1,10 @@
 import fetch from 'isomorphic-fetch'
 
 export const SORT_FOLLOWING = 'SORT_FOLLOWING'
-export function sortFollowing() {
+export function sortFollowing(orderBy, asc = true) {
   return {
-    type: SORT_FOLLOWING
+    type: SORT_FOLLOWING,
+    payload: { orderBy, asc }
   }
 }
 
@@ -18,17 +19,14 @@ export function getFollowing(username) {
         return response.json();
       })
       .then(function(following) {
-        return dispatch({
+        dispatch({
           type: GET_FOLLOWING,
           payload: following
         })
       })
       .then(function() {
-        return dispatch(sortFollowing())
-      })
-      .then(function(following) {
         getState().following.map((user) => {
-          dispatch(getRepos(user))
+          return dispatch(getRepos(user))
         })
       })
   }
@@ -45,12 +43,9 @@ export function getRepos(user) {
         return response.json();
       })
       .then(function(repositories) {
-        dispatch({
+        return dispatch({
           type: GET_REPOS,
-          payload: {
-            user,
-            repositories
-          }
+          payload: repositories
         })
       });
   }
