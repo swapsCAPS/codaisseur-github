@@ -1,6 +1,6 @@
 {
   "host": "http://codaisseur-github.codaisseur.cloud",
-  "port": 80,
+  "port": PORT,
   "mongodb": "MONGODB_URL",
   "public": "../client/",
   "auth": {
