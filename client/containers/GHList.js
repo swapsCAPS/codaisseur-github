@@ -76,7 +76,7 @@ class GHList extends Component {
 const mapStateToProps = (state) => {
   return {
     following: state.following,
-    currentUser: state.currentUser.github
+    currentUser: state.currentUser.github,
   }
 }
 

@@ -35,17 +35,6 @@ export function getFollowing(username) {
           payload: following
         })
       })
-      .then(function() {
-        // We have all users we are following
-        getState().following.map((user) => {
-          // Get ALL THE REPOS
-          dispatch(getRepos(user))
-          // Get full user object from github api.
-          // https://api.github.com/users/<username>/following
-          // gives nerfed representation
-          dispatch(getFullUser(user))
-        })
-      })
   }
 }
 
@@ -60,7 +49,7 @@ export function getFullUser(user) {
         return response.json();
       })
       .then(function(fullUser) {
-        return dispatch({
+        dispatch({
           type: GET_FULL_USER,
           payload: {
             user,
@@ -82,11 +71,28 @@ export function getRepos(user) {
         return response.json();
       })
       .then(function(repositories) {
-        // Fetch repo events
-        repositories.map((repo) => dispatch(getRepoEvents(repo)))
-        return dispatch({
+        dispatch({
           type: GET_REPOS,
-          payload: repositories
+          payload: { repositories, user }
+        })
+      })
+  }
+}
+
+export const GET_EVENTS = 'GET_EVENTS'
+export function getEvents(user) {
+  return (dispatch, getState) => {
+    return fetch(`${user.url}/events${accessToken(getState().currentUser)}`)
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new error('bad response from server');
+        }
+        return response.json();
+      })
+      .then(function(events) {
+        dispatch({
+          type: GET_EVENTS,
+          payload: { events, user }
         })
       })
   }
