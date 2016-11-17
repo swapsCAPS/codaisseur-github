@@ -8,13 +8,13 @@ import './App.sass'
 class App extends Component {
   render() {
     return(
-      <div>
         <MuiThemeProvider muiTheme={getMuiTheme(CodaisseurGithub)}>
-          <main className="app">
-            {this.props.children}
-          </main>
+          <div className="app">
+            <main>
+              {this.props.children}
+            </main>
+          </div>
         </MuiThemeProvider>
-      </div>
     );
   }
 }
