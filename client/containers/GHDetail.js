@@ -8,14 +8,14 @@ import './GHDetail.sass'
 const renderEvents = (user) => {
   if(!user || user === {} || !user.events) return ''
   return user.events.map((e, key) => {
-    return <TinyListItem key={key} sub={e.created_at} head={e.type} subsub={e.repo} />
+    return <TinyListItem key={key} head={e.type} sub={e.repo.name} subsub={e.created_at} />
   })
 }
 
 const renderRepos = (user) => {
   if(!user || user === {} || !user.repos) return ''
   return user.repos.map((r, key) => {
-    return <TinyListItem key={key} sub={r.created_at} head={r.name} />
+    return <TinyListItem key={key} head={r.name} sub={'Created: ' + r.created_at} />
   })
 }
 

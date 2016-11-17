@@ -9,7 +9,9 @@ class TinyListItem extends Component {
     const { head, sub, subsub } = this.props
     return (
       <Paper className="tiny-list-item" zDepth={1}>
-        <span>{head}</span>
+        <span className="head">{head}</span>
+        <span className="sub">{sub}</span>
+        <span className="subsub">{subsub}</span>
       </Paper>
     )
   }
