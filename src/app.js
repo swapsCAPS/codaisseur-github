@@ -16,13 +16,19 @@ const webpack = require('webpack');
 const app = feathers();
 
 const configType = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-const config = require(`../webpack.config.${configType}.js`);
-const compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
+if (configType === 'dev') {
+  const webpack = require('webpack');
+  const config = require(`../webpack.config.${configType}.js`);
+  const compiler = webpack(config);
+
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }));
+
+  app.use(require('webpack-hot-middleware')(compiler));
+}
 
 app.use(require('webpack-hot-middleware')(compiler));
 
@@ -33,6 +39,7 @@ app.use(compress())
   .use(cors())
   .use(favicon( path.join(app.get('public'), 'favicon.ico') ))
   .use('/', serveStatic( app.get('public') ))
+  .use('/static', serveStatic( app.get('public') ))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .configure(hooks())

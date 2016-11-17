@@ -1,18 +1,23 @@
 {
-  "host": "MemoryGame-app.feathersjs.com",
-  "port": 80,
-  "mongodb": "DATABASE_URL",
+  "host": "http://codaisseur-github.codaisseur.cloud",
+  "port": PORT,
+  "mongodb": "MONGODB_URL",
   "public": "../static/",
   "auth": {
+    "shouldSetupSuccessRoute": false,
+    "shouldSetupFailureRoute": false,
     "token": {
       "secret": "FEATHERS_AUTH_SECRET"
     },
     "local": false,
     "github": {
-      "clientID": "CODAISEUR_GH_CLIENT_ID",
-      "clientSecret": "CODAISEUR_GH_CLIENT_SECRET",
+      "clientID": "CODAISSEUR_GITHUB_CLIENT_ID",
+      "clientSecret": "CODAISSEUR_GITHUB_CLIENT_SECRET",
       "permissions": {
         "scope": []
+      },
+      "cookie": {
+        "name": "codaisseur-github-stroopwafel"
       }
     }
   }
