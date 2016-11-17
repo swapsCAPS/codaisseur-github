@@ -2,7 +2,7 @@
   "host": "http://codaisseur-github.codaisseur.cloud",
   "port": PORT,
   "mongodb": "MONGODB_URL",
-  "public": "../client/",
+  "public": "../static/",
   "auth": {
     "shouldSetupSuccessRoute": false,
     "shouldSetupFailureRoute": false,
