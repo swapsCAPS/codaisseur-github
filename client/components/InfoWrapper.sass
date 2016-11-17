@@ -17,3 +17,20 @@
     width: 300px
     white-space: nowrap
 
+  @-webkit-keyframes update
+    0%
+      background: Yellow
+      opacity: 1
+
+    22%
+      background: Yellow
+    77%
+      background: Red
+    100%
+      background: #777
+
+  .update
+    -webkit-animation-name: update
+    -webkit-animation-duration: 900ms
+    -webkit-animation-iteration-count: 1
+    -webkit-animation-timing-function: ease-in-out

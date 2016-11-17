@@ -1,5 +1,3 @@
-'use strict';
-
 const authentication = require('feathers-authentication');
 
 const GithubStrategy = require('passport-github').Strategy;
