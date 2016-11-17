@@ -100,24 +100,13 @@ export function getEvents(user) {
   }
 }
 
-export const GET_REPO_EVENTS = 'GET_REPO_EVENTS'
-export function getRepoEvents(repo) {
+export const SET_SELECTED_USER = 'SET_SELECTED_USER'
+export function setSelectedUser(userId) {
   return (dispatch, getState) => {
-    return fetch(repo.events_url +
-      accessToken(getState().currentUser) +
-      perPage(5) +
-      sortAsc(true, 'created_at')) // TODO This does not seem to work
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
-      .then(function(events) {
-        dispatch({
-          type: GET_REPO_EVENTS,
-          payload: events
-        })
-      })
+    const selectedUser = getState().following.filter((f) => f.id === userId)
+    dispatch({
+      type: SET_SELECTED_USER,
+      payload: selectedUser[0]
+    })
   }
 }

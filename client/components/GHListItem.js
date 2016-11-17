@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper'
 import Avatar from 'material-ui/Avatar'
 import InfoWrapper from '../components/InfoWrapper'
 
-import { getFullUser, getRepos, getEvents } from '../actions/get-following'
+import { getFullUser, getRepos, getEvents, setSelectedUser } from '../actions/get-following'
 
 import './GHListItem.sass'
 
@@ -34,14 +34,19 @@ class GHListItem extends Component {
     getEvents(user)
   }
 
-  getAvatar(userId){
-    return `https://avatars1.githubusercontent.com/u/${userId}?v=3&s=90`
+  getAvatar(userid){
+    return `https://avatars1.githubusercontent.com/u/${userid}?v=3&s=90`
+  }
+
+  setUser(){
+    const { user, setSelectedUser } = this.props
+    setSelectedUser(user.id)
   }
 
   render(){
     const { user } = this.props
     return (
-      <Paper className="list-item" zDepth={2}>
+      <Paper className="list-item" zDepth={2} onClick={this.setUser.bind(this)}>
         <div className="avatar-container">
           <a className="avatar-button" target="_blank" href={user.html_url}>
             <Avatar className="avatar" size={100} src={this.getAvatar(user.id)}/>
@@ -62,9 +67,5 @@ class GHListItem extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-  }
-}
 
-export default connect(mapStateToProps, { getFullUser, getRepos, getEvents })(GHListItem)
+export default connect(null, { getFullUser, getRepos, getEvents, setSelectedUser })(GHListItem)
