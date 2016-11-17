@@ -43,8 +43,10 @@ class GHListItem extends Component {
     return (
       <Paper className="list-item" zDepth={2}>
         <div className="avatar-container">
-          <Avatar className="avatar" size={100} src={this.getAvatar(user.id)}/>
-          <a target="_blank" href={user.html_url}><h3 className="username">{user.login}</h3></a>
+          <a className="avatar-button" target="_blank" href={user.html_url}>
+            <Avatar className="avatar" size={100} src={this.getAvatar(user.id)}/>
+            <h3 className="username">{user.login}</h3>
+          </a>
         </div>
         <div className="content-container">
           <div className="info-container">
