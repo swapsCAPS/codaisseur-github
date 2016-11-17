@@ -6,10 +6,10 @@ import './TinyListItem.sass'
 class TinyListItem extends Component {
 
   render(){
-    const { type, repo, payload } = this.props
+    const { head, sub, subsub } = this.props
     return (
       <Paper className="tiny-list-item" zDepth={1}>
-        <span>{type}</span>
+        <span>{head}</span>
       </Paper>
     )
   }

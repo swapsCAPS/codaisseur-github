@@ -8,7 +8,14 @@ import './GHDetail.sass'
 const renderEvents = (user) => {
   if(!user || user === {} || !user.events) return ''
   return user.events.map((e, key) => {
-    return <TinyListItem key={key} createdAt={e.created_at} type={e.type} repo={e.repo} payload={e.payload} />
+    return <TinyListItem key={key} sub={e.created_at} head={e.type} subsub={e.repo} />
+  })
+}
+
+const renderRepos = (user) => {
+  if(!user || user === {} || !user.repos) return ''
+  return user.repos.map((r, key) => {
+    return <TinyListItem key={key} sub={r.created_at} head={r.name} />
   })
 }
 
@@ -26,8 +33,11 @@ class GHListItem extends Component {
               {renderEvents(user)}
             </div>
           </div>
-          <div className="small-list repos">
+          <div className="repos">
             <h3>Repositories:</h3>
+            <div className="small-list">
+              {renderRepos(user)}
+            </div>
           </div>
         </Paper>
       </Paper>
