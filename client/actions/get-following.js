@@ -1,5 +1,8 @@
 import fetch from 'isomorphic-fetch'
 
+/*
+ * URL helpers for easier API calls
+ */
 const URL = 'https://api.github.com'
 const accessToken = (currentUser) => {
   if(!currentUser) return '?access_token='
@@ -13,6 +16,11 @@ const sortAsc = (boolean, param) => {
   return boolean ? '&order=asc&sort=' + param : '&order=desc&sort=' + param
 }
 
+/*
+ *
+ * ALL THE ACTIONS 8-/
+ *
+ */
 export const SORT_FOLLOWING = 'SORT_FOLLOWING'
 export function sortFollowing(orderBy = 'login', asc = true) {
   return {

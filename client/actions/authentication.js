@@ -6,7 +6,6 @@ export function authenticate() {
     api.authenticate()
       .then((response) => {
         dispatch(setCurrentUser(response.data))
-        dispatch(setGithubToken(response.token))
         history.push('/')
       })
       .catch((error) => {
@@ -20,13 +19,5 @@ export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,
     payload: user
-  }
-}
-
-export const SET_GITHUB_TOKEN = 'SET_GITHUB_TOKEN'
-export function setGithubToken(token) {
-  return {
-    type: SET_GITHUB_TOKEN,
-    payload: token
   }
 }
