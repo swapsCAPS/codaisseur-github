@@ -16,7 +16,7 @@ class Home extends Component {
         {
           currentUser ?
             <div className="home"><GHList /><GHDetail /></div> :
-          <SignIn />
+            <div className="center"><SignIn /></div>
         }
       </div>
     )

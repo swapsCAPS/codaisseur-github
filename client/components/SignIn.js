@@ -14,7 +14,7 @@ class SignIn extends Component {
 
   render() {
     return(
-      <Paper className="sign-in" zDepth={3}>
+      <Paper className="sign-in" zDepth={5}>
         <h1>Login:</h1>
         <RaisedButton
           className="button"
