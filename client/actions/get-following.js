@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch'
 
 const URL = 'https://api.github.com'
 const accessToken = (currentUser) => {
+  if(!currentUser) return '?access_token='
+  if(!currentUser.github) return '?access_token='
   return '?access_token=' + currentUser.github.accessToken
 }
 const perPage = (amount) => {
