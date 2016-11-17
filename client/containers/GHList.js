@@ -32,6 +32,8 @@ class GHList extends Component {
         return sortFollowing('login', asc)
       case 2:
         return sortFollowing('publicRepos', asc)
+      case 3:
+        return sortFollowing('latestEvent', asc)
     }
   }
 
@@ -54,6 +56,7 @@ class GHList extends Component {
           >
             <MenuItem value={1} primaryText="Username" />
             <MenuItem value={2} primaryText="Public repos" />
+            <MenuItem value={3} primaryText="Latest event" />
           </SelectField>
           <SelectField
             style={{width: 120}}

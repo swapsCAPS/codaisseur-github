@@ -3,7 +3,7 @@ import { GET_FOLLOWING, GET_FULL_USER, GET_REPOS, GET_EVENTS, SORT_FOLLOWING } f
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
     case GET_FOLLOWING:
-      return sortByLogin(payload)
+      return sortByLoginName(payload)
     case GET_FULL_USER:
       return state.map((user) => {
         if(user.id === payload.fullUser.id) return payload.fullUser
@@ -29,6 +29,9 @@ export default (state = [], { type, payload } = {}) => {
         case 'publicRepos':
           if(payload.asc) return sortByPublicRepos(state)
           return sortByPublicRepos(state).reverse()
+        case 'latestEvent':
+          if(payload.asc) return sortByLatestEvent(state)
+          return sortByLatestEvent(state).reverse()
         default:
           return state
       }
@@ -37,10 +40,18 @@ export default (state = [], { type, payload } = {}) => {
   }
 }
 
-const sortByLogin = (array) => {
-  return array.sort((a, b) => {
+const sortByLoginName = (users) => {
+  return users.sort((a, b) => {
     if(a.login.toLowerCase() > b.login.toLowerCase()) return 1
     if(a.login.toLowerCase() < b.login.toLowerCase()) return -1
+    return 0
+  })
+}
+
+const sortByLatestEvent = (users) => {
+  return users.sort((a, b) => {
+    if(a.events[0].created_at > b.events[0].created_at) return 1
+    if(a.events[0].created_at < b.events[0].created_at) return -1
     return 0
   })
 }
@@ -59,4 +70,3 @@ const sortByCreatedAt = (repos) => {
     return 0
   })
 }
-
