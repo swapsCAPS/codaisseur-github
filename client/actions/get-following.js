@@ -7,6 +7,9 @@ const accessToken = (currentUser) => {
 const perPage = (amount) => {
   return '&per_page=' + amount
 }
+const sortAsc = (boolean, param) => {
+  return boolean ? '&order=asc&sort=' + param : '&order=desc&sort=' + param
+}
 
 export const SORT_FOLLOWING = 'SORT_FOLLOWING'
 export function sortFollowing(orderBy = 'login', asc = true) {
@@ -79,14 +82,11 @@ export function getRepos(user) {
         return response.json();
       })
       .then(function(repositories) {
+        // Fetch repo events
+        repositories.map((repo) => dispatch(getRepoEvents(repo)))
         return dispatch({
           type: GET_REPOS,
           payload: repositories
-        })
-      })
-      .then(function() {
-        getState().repos.map((repo) => {
-          dispatch(getRepoEvents(repo))
         })
       })
   }
@@ -95,7 +95,10 @@ export function getRepos(user) {
 export const GET_REPO_EVENTS = 'GET_REPO_EVENTS'
 export function getRepoEvents(repo) {
   return (dispatch, getState) => {
-    return fetch(`${repo.events_url}${accessToken(getState().currentUser)}${perPage(10)}`)
+    return fetch(repo.events_url +
+      accessToken(getState().currentUser) +
+      perPage(5) +
+      sortAsc(true, 'created_at')) // TODO This does not seem to work
       .then(function(response) {
         if (response.status >= 400) {
           throw new error('bad response from server');
@@ -103,7 +106,7 @@ export function getRepoEvents(repo) {
         return response.json();
       })
       .then(function(events) {
-        return dispatch({
+        dispatch({
           type: GET_REPO_EVENTS,
           payload: events
         })
