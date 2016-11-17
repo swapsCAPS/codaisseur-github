@@ -49,6 +49,7 @@
     "redux": "^3.6.0",
     "redux-auth": "0.0.5-beta5",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4",
     "serve-favicon": "^2.3.0",
     "socket.io-client": "^1.4.8",
     "winston": "^2.2.0"
