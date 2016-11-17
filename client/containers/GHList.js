@@ -64,11 +64,13 @@ class GHList extends Component {
             <MenuItem value={true} primaryText="Ascending" />
             <MenuItem value={false} primaryText="Descending" />
           </SelectField>
-        </div>{
+        </div>
+        <div className="list">{
           following.map((f, key) => {
             return <GHListItem user={f} key={key} />
           })
         }</div>
+      </div>
     )
   }
 }

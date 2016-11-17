@@ -1,13 +1,11 @@
 import token from './token'
 import currentUser from './currentUser'
 import following from './following'
-import repos from './repos'
-import repoEvents from './repoEvents'
+import selectedUser from './selectedUser'
 
 module.exports = {
   token,
   currentUser,
   following,
-  repos,
-  repoEvents,
+  selectedUser,
 }

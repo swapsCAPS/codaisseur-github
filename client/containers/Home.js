@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import GHList from '../containers/GHList'
+import GHDetail from '../containers/GHDetail'
 import SignIn from '../components/SignIn'
+
+import './Home.sass'
 
 class Home extends Component {
 
@@ -12,7 +15,7 @@ class Home extends Component {
       <div>
         {
           currentUser ?
-          <GHList /> :
+            <div className="home"><GHList /><GHDetail /></div> :
           <SignIn />
         }
       </div>
