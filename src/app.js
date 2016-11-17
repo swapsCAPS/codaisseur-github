@@ -30,8 +30,6 @@ if (configType === 'dev') {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.use(require('webpack-hot-middleware')(compiler));
-
 app.configure(configuration(path.join(__dirname, '..')));
 
 app.use(compress())

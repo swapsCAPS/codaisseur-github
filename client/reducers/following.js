@@ -24,8 +24,8 @@ export default (state = [], { type, payload } = {}) => {
     case SORT_FOLLOWING:
       switch(payload.orderBy){
         case 'login':
-          if(payload.asc) return sortByLogin(state)
-          return sortByLogin(state).reverse()
+          if(payload.asc) return sortByLoginName(state)
+          return sortByLoginName(state).reverse()
         case 'publicRepos':
           if(payload.asc) return sortByPublicRepos(state)
           return sortByPublicRepos(state).reverse()
