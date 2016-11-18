@@ -9,7 +9,7 @@ import GHListItem from '../components/GHListItem'
 
 import './GHList.sass'
 
-import { getFollowing, sortFollowing } from '../actions/get-following'
+import { resetSelectedUser, resetFollowing, getFollowing, sortFollowing } from '../actions/get-following'
 
 class GHList extends Component {
   state = {
@@ -40,7 +40,10 @@ class GHList extends Component {
   }
 
   refresh() {
-    this.forceUpdate()
+    const { resetSelectedUser, resetFollowing, getFollowing, currentUser } = this.props
+    resetFollowing()
+    resetSelectedUser()
+    getFollowing(currentUser.login)
   }
 
   componentWillMount() {
@@ -97,4 +100,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getFollowing, sortFollowing })(GHList)
+export default connect(mapStateToProps, { resetSelectedUser, resetFollowing, getFollowing, sortFollowing })(GHList)

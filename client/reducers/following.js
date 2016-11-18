@@ -1,7 +1,9 @@
-import { GET_FOLLOWING, GET_FULL_USER, GET_REPOS, GET_EVENTS, SORT_FOLLOWING } from '../actions/get-following'
+import { RESET_FOLLOWING, GET_FOLLOWING, GET_FULL_USER, GET_REPOS, GET_EVENTS, SORT_FOLLOWING } from '../actions/get-following'
 
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
+    case RESET_FOLLOWING:
+      return []
     case GET_FOLLOWING:
       return sortByLoginName(payload)
     case GET_FULL_USER:

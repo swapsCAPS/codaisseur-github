@@ -29,6 +29,20 @@ export function sortFollowing(orderBy = 'login', asc = true) {
   }
 }
 
+export const RESET_FOLLOWING = 'RESET_FOLLOWING'
+export function resetFollowing(){
+  return {
+    type: RESET_FOLLOWING
+  }
+}
+
+export const RESET_SELECTED_USER = 'RESET_SELECTED_USER'
+export function resetSelectedUser(){
+  return {
+    type: RESET_SELECTED_USER
+  }
+}
+
 export const GET_FOLLOWING = 'GET_FOLLOWING'
 export function getFollowing(username) {
   return (dispatch, getState) => {
