@@ -1,3 +1,5 @@
+'use strict'
+
 const path = require('path');
 const handler = require('feathers-errors/handler');
 const notFound = require('./not-found-handler');

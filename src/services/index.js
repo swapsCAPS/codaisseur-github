@@ -1,3 +1,5 @@
+'use strict'
+
 const authentication = require('./authentication');
 const user = require('./user');
 const mongoose = require('mongoose');
