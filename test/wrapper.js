@@ -13,7 +13,7 @@ export default (node, nodeContext = {}) => {
     <Provider store={store}>
       <MuiThemeProvider>
         {node}
-    </MuiThemeProvider>
+      </MuiThemeProvider>
     </Provider>, { context }
   )
 }
