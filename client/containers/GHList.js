@@ -65,29 +65,27 @@ class GHList extends Component {
               style={{marginRight: 8, width: 138}}
               floatingLabelText="Order by"
               value={this.state.orderBy}
-              onChange={this.setOrderBy.bind(this)}
-            >
+              onChange={this.setOrderBy.bind(this)}>
               <MenuItem value={1} primaryText="Username" />
               <MenuItem value={2} primaryText="Public repos" />
               <MenuItem value={3} primaryText="Latest event" />
-      </SelectField>
-      <SelectField
-        style={{width: 120}}
-        floatingLabelText="Sort"
-        value={this.state.asc}
-        onChange={this.setAscDesc.bind(this)}
-      >
-        <MenuItem value={true} primaryText="Ascending" />
-        <MenuItem value={false} primaryText="Descending" />
-      </SelectField>
-    </div>
-      </div>
+            </SelectField>
+            <SelectField
+              style={{width: 120}}
+              floatingLabelText="Sort"
+              value={this.state.asc}
+              onChange={this.setAscDesc.bind(this)} >
+              <MenuItem value={true} primaryText="Ascending" />
+              <MenuItem value={false} primaryText="Descending" />
+            </SelectField>
+          </div>
+        </div>
         <div className="list">{
           following.map((f, key) => {
             return <GHListItem user={f} key={key} />
           })
         }</div>
-      </div>
+    </div>
     )
   }
 }
