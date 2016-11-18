@@ -4,7 +4,7 @@
 var lint = require('mocha-eslint');
 
 var paths = [
-  'src', 'client'
+  'client'
 ];
 
 var options = {

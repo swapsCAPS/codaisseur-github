@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const authentication = require('./authentication');
 const user = require('./user');
