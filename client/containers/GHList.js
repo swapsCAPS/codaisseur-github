@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
 import MenuItem from 'material-ui/MenuItem';
 import GHListItem from '../components/GHListItem'
 
@@ -37,6 +39,10 @@ class GHList extends Component {
     }
   }
 
+  refresh() {
+    this.forceUpdate()
+  }
+
   componentWillMount() {
     const { getFollowing, currentUser } = this.props
     getFollowing(currentUser.login)
@@ -47,27 +53,35 @@ class GHList extends Component {
 
     return(
       <div className="gh-list">
-        <div className="orderby-wrapper">
-          <SelectField
-            style={{marginRight: 8, width: 138}}
-            floatingLabelText="Order by"
-            value={this.state.orderBy}
-            onChange={this.setOrderBy.bind(this)}
-          >
-            <MenuItem value={1} primaryText="Username" />
-            <MenuItem value={2} primaryText="Public repos" />
-            <MenuItem value={3} primaryText="Latest event" />
-          </SelectField>
-          <SelectField
-            style={{width: 120}}
-            floatingLabelText="Sort"
-            value={this.state.asc}
-            onChange={this.setAscDesc.bind(this)}
-          >
-            <MenuItem value={true} primaryText="Ascending" />
-            <MenuItem value={false} primaryText="Descending" />
-          </SelectField>
-        </div>
+        <div className="header">
+          <RaisedButton
+            className="button"
+            label="Refresh"
+            labelPosition="before"
+            onClick={this.refresh.bind(this)}
+            primary={true} />
+          <div className="orderby-wrapper">
+            <SelectField
+              style={{marginRight: 8, width: 138}}
+              floatingLabelText="Order by"
+              value={this.state.orderBy}
+              onChange={this.setOrderBy.bind(this)}
+            >
+              <MenuItem value={1} primaryText="Username" />
+              <MenuItem value={2} primaryText="Public repos" />
+              <MenuItem value={3} primaryText="Latest event" />
+      </SelectField>
+      <SelectField
+        style={{width: 120}}
+        floatingLabelText="Sort"
+        value={this.state.asc}
+        onChange={this.setAscDesc.bind(this)}
+      >
+        <MenuItem value={true} primaryText="Ascending" />
+        <MenuItem value={false} primaryText="Descending" />
+      </SelectField>
+    </div>
+      </div>
         <div className="list">{
           following.map((f, key) => {
             return <GHListItem user={f} key={key} />
