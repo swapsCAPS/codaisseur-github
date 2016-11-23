@@ -10,9 +10,7 @@ class App extends Component {
     return(
         <MuiThemeProvider muiTheme={getMuiTheme(CodaisseurGithub)}>
           <div className="app">
-            <main>
-              {this.props.children}
-            </main>
+            {this.props.children}
           </div>
         </MuiThemeProvider>
     );

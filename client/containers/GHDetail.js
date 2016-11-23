@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
 import TinyListItem from '../components/TinyListItem'
 
-import './GHDetail.sass'
+import './GHList.sass'
 
 const renderEvents = (user) => {
   if(!user || user === {} || !user.events) return ''
@@ -24,7 +24,7 @@ class GHListItem extends Component {
   render(){
     const { user } = this.props
     return (
-      <Paper className="detail" zDepth={5}>
+      <Paper className="main" zDepth={5}>
         <h1>{user.login}</h1>
         <Paper className="container" zDepth={1}>
           <div className="events">

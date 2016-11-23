@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import Paper from 'material-ui/Paper';
 import Subheader from 'material-ui/Subheader';
 import SelectField from 'material-ui/SelectField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -55,7 +56,7 @@ class GHList extends Component {
     const { following } = this.props
 
     return(
-      <div className="gh-list">
+      <Paper zDepth={5} className="main">
         <div className="header">
           <RaisedButton
             className="button"
@@ -83,12 +84,16 @@ class GHList extends Component {
             </SelectField>
           </div>
         </div>
-        <div className="list">{
-          following.map((f, key) => {
-            return <GHListItem user={f} key={key} />
-          })
-        }</div>
-    </div>
+        <div className="list">
+          <div className="content">
+          {
+            following.map((f, key) => {
+              return <GHListItem user={f} key={key} />
+            })
+          }
+          </div>
+        </div>
+    </Paper>
     )
   }
 }
