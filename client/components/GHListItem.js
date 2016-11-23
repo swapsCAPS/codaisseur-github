@@ -6,6 +6,7 @@ import Avatar from 'material-ui/Avatar'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import InfoWrapper from '../components/InfoWrapper'
+import { date } from '../helpers/properDate'
 
 import { getFullUser, getRepos, getEvents, setSelectedUser } from '../actions/get-following'
 
@@ -15,7 +16,7 @@ const latestRepo = (user) => {
   if(!user) return 'No user'
   if(!user.repos || user.repos.length === 0) return 'No repos'
   const last = user.repos[0]
-  return last.created_at.substring(0, last.created_at.indexOf('T')) + ': ' + last.name
+  return date(last.created_at) + ': ' + last.name
 }
 
 const latestEvent = (user) => {
@@ -26,7 +27,7 @@ const latestEvent = (user) => {
     if(last.type === 'PushEvent') return last.payload.commits
     return []
   }
-  return last.created_at.substring(0, last.created_at.indexOf('T')) + ': ' + last.type.substring(0, last.type.indexOf('Event')) + ' in '  + last.repo.name
+  return date(last.created_at) + ': ' + last.type.substring(0, last.type.indexOf('Event')) + ' in '  + last.repo.name
 }
 
 const renderRepos = (user) => {

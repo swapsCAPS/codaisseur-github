@@ -12,7 +12,7 @@ const expandItem = (key) => {
 const renderEvents = (user) => {
   if(!user || user === {} || !user.events) return ''
   return user.events.map((e, key) => {
-    return <TinyListItem key={key} head={e.type} sub={e.repo.name} subsub={e.created_at} />
+    return <TinyListItem key={key} event={e}/>
   })
 }
 

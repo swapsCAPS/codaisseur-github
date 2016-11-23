@@ -18,9 +18,9 @@ export default (state = [], { type, payload } = {}) => {
         return user
       })
     case GET_EVENTS:
-      const userEvents = sortByCreatedAt(payload.events)
+      const pushEvents = sortByCreatedAt(filterPushEvents(payload.events))
       return state.map((user) => {
-        if(user.id === payload.user.id) return Object.assign({}, user, { events: userEvents })
+        if(user.id === payload.user.id) return Object.assign({}, user, { events: pushEvents })
         return user
       })
     case SORT_FOLLOWING:
@@ -62,6 +62,10 @@ const sortByPublicRepos = (array) => {
   return array.sort((a, b) => {
     return b.public_repos - a.public_repos
   })
+}
+
+const filterPushEvents = (events) => {
+  return events.filter((e) => e.type === 'PushEvent')
 }
 
 // Sort ascending for easy access to latest. i.e: array[0]

@@ -2,24 +2,45 @@
   margin-bottom: 4px
   font-weight: bold
 
-  span
+  .wrap-text
     text-overflow: ellipsis
     overflow: hidden
-    width: 230px
     white-space: nowrap
     display: inline-block
-    margin-left: 4px
+    color: #333
 
-  .head
+  .li-header
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    padding: 6px 8px 0 8px
+    height: 26px
     font-size: 16px
+
+    .li-head
+      width: 100px
+
+    .li-subsub
+      width: 180px
+      text-align: end
+
+  .li-divider
+    margin-left: 32px
+    margin-right: 32px
+    margin-bottom: 4px
+    height: 1px
+    background: #ddd
+
+  .li-content
     margin-top: 4px
-
-  .sub
+    font-weight: normal
     font-size: 12px
-    margin-top: 2px
+    display: flex
+    height: 165px
+    margin-left: 8px
+    flex-wrap: wrap
+    flex-direction: column
 
-  .subsub
-    font-size: 10px
-    margin-top: 2px
-    color: #aaa
-
+    .li-commit-msg
+      width: 33%
+      height: 18px

@@ -122,6 +122,24 @@ export function getEvents(user) {
   }
 }
 
+export const GO_TO_COMMIT = 'GO_TO_COMMIT'
+export function goToCommit(commitURL) {
+  return (dispatch, getState) => {
+    return fetch(commitURL)
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new error('bad response from server');
+        }
+        return response.json();
+      })
+      .then(function(commit) {
+        console.log(commit.html_url)
+        window.open(commit.html_url)
+      })
+  }
+}
+
+
 export const SET_SELECTED_USER = 'SET_SELECTED_USER'
 export function setSelectedUser(userId) {
   return (dispatch, getState) => {
