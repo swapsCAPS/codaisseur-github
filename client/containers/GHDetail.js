@@ -5,6 +5,10 @@ import TinyListItem from '../components/TinyListItem'
 
 import './GHList.sass'
 
+const expandItem = (key) => {
+
+}
+
 const renderEvents = (user) => {
   if(!user || user === {} || !user.events) return ''
   return user.events.map((e, key) => {
@@ -19,27 +23,22 @@ const renderRepos = (user) => {
   })
 }
 
-class GHListItem extends Component {
+class GHDetail extends Component {
 
   render(){
     const { user } = this.props
     return (
       <Paper className="main" zDepth={5}>
-        <h1>{user.login}</h1>
-        <Paper className="container" zDepth={1}>
-          <div className="events">
-            <h3>Events:</h3>
-            <div className="small-list">
+        <div className="header">
+          <h1>{user.login}</h1>
+        </div>
+        <div className="events">
+          <div className="list">
+            <div className="content">
               {renderEvents(user)}
             </div>
           </div>
-          <div className="repos">
-            <h3>Repositories:</h3>
-            <div className="small-list">
-              {renderRepos(user)}
-            </div>
-          </div>
-        </Paper>
+        </div>
       </Paper>
     )
   }
@@ -51,4 +50,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default connect(mapStateToProps, {})(GHListItem)
+export default connect(mapStateToProps, {})(GHDetail)
