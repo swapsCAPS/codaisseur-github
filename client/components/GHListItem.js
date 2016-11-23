@@ -23,11 +23,7 @@ const latestEvent = (user) => {
   if(!user) return 'No user'
   if(!user.events || user.events.length === 0) return 'No events'
   const last = user.events[0]
-  const commits = (last) => {
-    if(last.type === 'PushEvent') return last.payload.commits
-    return []
-  }
-  return date(last.created_at) + ': ' + last.type.substring(0, last.type.indexOf('Event')) + ' in '  + last.repo.name
+  return date(last.created_at) + ': ' + 'In '  + last.repo.name
 }
 
 const renderRepos = (user) => {
@@ -80,7 +76,7 @@ class GHListItem extends Component {
             <InfoWrapper type="Email:" info={ user.email ? user.email : 'No email given' }/>
             <InfoWrapper type="Public repos:" info={ user.public_repos }/>
             <InfoWrapper type="Recent repo:" info={ latestRepo(user) }/>
-            <InfoWrapper type="Recent activity:" info={ latestEvent(user) }/>
+            <InfoWrapper type="Recent push:" info={ latestEvent(user) }/>
           </div>
         </div>
       </Paper>

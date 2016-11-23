@@ -10,7 +10,7 @@ import './TinyListItem.sass'
 const NORMAL = 32
 const EXPANDED = 200
 const NORMAL_DEPTH = 1
-const EXPANDED_DEPTH = 2
+const EXPANDED_DEPTH = 4
 
 
 class TinyListItem extends Component {
@@ -32,7 +32,7 @@ class TinyListItem extends Component {
             {
               event.payload.commits.map((c, i) => {
                 return (
-                  <span key={i} onClick={ this.props.goToCommit.bind(this, c.url) }className="li-commit-msg wrap-text">{ c.message }</span>
+                  <span key={i} onClick={ this.props.goToCommit.bind(this, c.url) } className="li-commit-msg wrap-text">{ c.message }</span>
                 )
               })
             }
