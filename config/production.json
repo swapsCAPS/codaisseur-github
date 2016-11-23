@@ -4,6 +4,7 @@
   "mongodb": "MONGODB_URL",
   "public": "../static/",
   "auth": {
+    "idField": "_id",
     "shouldSetupSuccessRoute": false,
     "shouldSetupFailureRoute": false,
     "token": {

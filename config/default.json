@@ -4,6 +4,7 @@
   "mongodb": "mongodb://localhost:27017/CodaisseurGithub",
   "public": "../client/",
   "auth": {
+    "idField": "_id",
     "shouldSetupSuccessRoute": false,
     "shouldSetupFailureRoute": false,
     "token": {
