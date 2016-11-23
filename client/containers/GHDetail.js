@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 import Paper from 'material-ui/Paper'
+import RaisedButton from 'material-ui/RaisedButton'
 import TinyListItem from '../components/TinyListItem'
 
 import './GHList.sass'
@@ -29,7 +31,13 @@ class GHDetail extends Component {
     const { user } = this.props
     return (
       <Paper className="main" zDepth={5}>
-        <div className="header">
+        <div className="header detail">
+          <RaisedButton
+            className="button"
+            label="Go back"
+            labelPosition="before"
+            onClick={browserHistory.goBack}
+            primary={true} />
           <h1>{user.login}</h1>
         </div>
         <div className="events">
