@@ -32,6 +32,7 @@ class TinyListItem extends Component {
           <div className="li-content">
             {
               event.payload.commits.map((c, i) => {
+                if(i > 27) return
                 return (
                   <span key={i} onClick={ this.props.goToCommit.bind(this, c.url) } className="li-commit-msg wrap-text">{ c.message }</span>
                 )
@@ -41,13 +42,14 @@ class TinyListItem extends Component {
         </div>
       )
     }
-
   }
 
   expand() {
     console.log('expand')
+    const height = NORMAL + 1 + (19 * this.props.event.payload.commits.length)
+    const calculatedHeight = height >= 200 ? 200 : height
     if(this.state.expanded === false){
-      this.setState({ height: EXPANDED, depth: EXPANDED_DEPTH, expanded: true })
+      this.setState({ height: calculatedHeight, depth: EXPANDED_DEPTH, expanded: true })
     }
     if(this.state.expanded === true){
       this.setState({ height: NORMAL, depth: NORMAL_DEPTH, expanded: false })
