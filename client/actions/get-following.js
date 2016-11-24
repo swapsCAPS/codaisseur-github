@@ -84,6 +84,7 @@ export function getFollowing(username) {
 export const GET_FULL_USER = 'GET_FULL_USER'
 export function getFullUser(user) {
   return (dispatch, getState) => {
+    dispatch(setUserLoading(user.id, true))
     return fetch(`${user.url}${accessToken(getState().currentUser)}`)
       .then(function(response) {
         if (response.status >= 400) {
@@ -99,6 +100,7 @@ export function getFullUser(user) {
             fullUser
           }
         })
+        dispatch(setUserLoading(user.id, false))
       });
   }
 }
