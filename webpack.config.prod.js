@@ -44,15 +44,7 @@ module.exports = {
         exclude: [/(node_modules|bower_components)/, /\.test\.jsx?$/],
         loader: 'babel',
         query: {
-          presets: ['airbnb', 'react', 'es2015', 'stage-0'],
-          plugins: [[
-            'react-transform', {
-              transforms: [{
-                transform: 'react-transform-hmr',
-                imports: ['react'],
-                locals: ['module']
-            }]
-          }]]
+          presets: ['airbnb', 'react', 'es2015', 'stage-0']
         },
       },
       { test: /\.woff2?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
