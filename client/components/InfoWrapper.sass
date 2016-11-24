@@ -4,9 +4,6 @@
   position: relative
   font-size: 12px
   cursor: pointer
-  @media screen and (max-width: 451px)
-    height: 30px
-    font-size: 16px
 
   .type
     display: inline-block
@@ -14,23 +11,20 @@
     text-overflow: ellipsis
     width: 80px
     white-space: nowrap
-    @media screen and (max-width: 451px)
-      width: 105px
+    @media screen and (max-width: 321px)
+      width: 75px
+    @media only screen and (min-width: 321) and (max-width: 1024px)
+      width: 200px
 
   .info
     display: inline-block
     overflow: hidden
     text-overflow: ellipsis
     white-space: nowrap
-    width: 270px
-    @media screen and (max-width: 451px)
-      width: 105px
-    @media only screen and (min-width: 451px) and (max-width: 1024px)
+    width: 100
+    @media screen and (min-width: 360px)
+      width: 140px
+    @media screen and (min-width: 412px)
       width: 200px
-    @media screen and (min-width: 650px)
-      width: 270px
-    @media screen and (min-width: 1025px)
-      width: 270px
-    @media screen and (min-width: 1200px)
-      width: 500px
-
+    @media screen and (min-width: 600px)
+      width: 300px
