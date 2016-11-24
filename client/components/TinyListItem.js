@@ -4,6 +4,7 @@ import moment from 'moment'
 import Paper from 'material-ui/Paper'
 import { dateTime } from '../helpers/properDate.js'
 import { goToCommit } from '../actions/get-following'
+import { apiRepoToHtmlRepo } from '../helpers/url-stuff'
 
 import './TinyListItem.sass'
 
@@ -40,6 +41,7 @@ class TinyListItem extends Component {
         </div>
       )
     }
+
   }
 
   expand() {
@@ -55,10 +57,10 @@ class TinyListItem extends Component {
   render(){
     const { event } = this.props
     return (
-      <Paper style={{height: this.state.height}} onClick={this.expand.bind(this)} className="tiny-list-item" zDepth={this.state.depth}>
+      <Paper style={{height: this.state.height}} className="tiny-list-item" zDepth={this.state.depth}>
         <div className="li-header">
-          <span className="li-head wrap-text">{ event.payload.commits.length + ' commits' }</span>
-          <span className="li-sub wrap-text">{ event.repo.name }</span>
+          <span onClick={this.expand.bind(this)} className="li-head wrap-text">{ event.payload.commits.length + ' Commits' }</span>
+          <a href={ apiRepoToHtmlRepo(event.repo.url) } target="_blank" className="li-sub wrap-text">{ event.repo.name }</a>
           <span className="li-subsub wrap-text">{ dateTime(event.created_at) }</span>
         </div>
         { this.state.expanded ? this.renderContent(event) : null }

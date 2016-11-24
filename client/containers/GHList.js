@@ -43,6 +43,7 @@ class GHList extends Component {
   refresh() {
     const { setNeedsUpdate, resetSelectedUser, resetFollowing, getFollowing, currentUser } = this.props
     setNeedsUpdate(true)
+    this.setState({ orderBy: 1, asc: true })
     resetFollowing()
     resetSelectedUser()
     getFollowing(currentUser.login)
