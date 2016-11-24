@@ -74,7 +74,7 @@ class GHListItem extends Component {
   }
 
   getAvatar(userid){
-    return `https://avatars1.githubusercontent.com/u/${userid}?v=3&s=350`
+    return `https://avatars1.githubusercontent.com/u/${userid}?v=3&s=200`
   }
 
   setUser(){
@@ -89,7 +89,7 @@ class GHListItem extends Component {
       <Paper className="list-item" zDepth={2}>
         <div className="avatar-container">
           <a className="avatar-button" target="_blank" href={user.html_url}>
-            <Avatar className="avatar" size={140} src={this.getAvatar(user.id)}/>
+            <Avatar className="avatar" size={70} src={this.getAvatar(user.id)}/>
             <h3 className="username">{user.login}</h3>
           </a>
         </div>

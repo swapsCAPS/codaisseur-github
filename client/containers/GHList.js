@@ -64,7 +64,6 @@ class GHList extends Component {
           <RaisedButton
             className="button"
             label="Refresh"
-            labelPosition="before"
             onClick={this.refresh.bind(this)}
             primary={true} />
           <div className="orderby-wrapper">

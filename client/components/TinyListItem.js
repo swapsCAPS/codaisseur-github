@@ -11,7 +11,7 @@ import './TinyListItem.sass'
 const NORMAL = 32
 const EXPANDED = 200
 const NORMAL_DEPTH = 1
-const EXPANDED_DEPTH = 4
+const EXPANDED_DEPTH = 5
 
 
 class TinyListItem extends Component {
@@ -46,7 +46,7 @@ class TinyListItem extends Component {
 
   expand() {
     console.log('expand')
-    const height = NORMAL + 1 + (19 * this.props.event.payload.commits.length)
+    const height = NORMAL + 4 + (19 * this.props.event.payload.commits.length)
     const calculatedHeight = height >= 200 ? 200 : height
     if(this.state.expanded === false){
       this.setState({ height: calculatedHeight, depth: EXPANDED_DEPTH, expanded: true })

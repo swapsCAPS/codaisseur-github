@@ -1,17 +1,21 @@
 .info-wrapper
-  height: 35px
+  height: 18px
   white-space: nowrap
-  font-weight: bold
   position: relative
-  font-size: 18px
+  font-size: 12px
   cursor: pointer
+  @media screen and (max-width: 451px)
+    height: 30px
+    font-size: 16px
 
   .type
     display: inline-block
     overflow: hidden
     text-overflow: ellipsis
-    width: 120px
+    width: 80px
     white-space: nowrap
+    @media screen and (max-width: 451px)
+      width: 105px
 
   .info
     display: inline-block
@@ -19,3 +23,14 @@
     text-overflow: ellipsis
     white-space: nowrap
     width: 270px
+    @media screen and (max-width: 451px)
+      width: 105px
+    @media only screen and (min-width: 451px) and (max-width: 1024px)
+      width: 350px
+    @media screen and (min-width: 650px)
+      width: 300px
+    @media screen and (min-width: 1025px)
+      width: 270px
+    @media screen and (min-width: 1200px)
+      width: 500px
+
