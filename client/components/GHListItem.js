@@ -21,7 +21,7 @@ const latestRepo = (user) => {
 
 const latestEvent = (user) => {
   if(!user) return 'No user'
-  if(!user.events || user.events.length === 0) return 'No events'
+  if(!user.events || user.events.length === 0) return 'No recent pushes'
   const last = user.events[0]
   return date(last.created_at) + ': ' + 'In '  + last.repo.name
 }
@@ -64,6 +64,8 @@ class GHListItem extends Component {
 
   componentDidMount() {
     const { user, getFullUser, getRepos, getEvents } = this.props
+    if(user.events && user.repos) return
+    if(user.events > 0 && user.repos > 0) return
     setUserLoading(user.id, true)
     getFullUser(user)
     getRepos(user)

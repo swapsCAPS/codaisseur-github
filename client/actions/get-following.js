@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-
 /*
  * URL helpers for easier API calls
  */
@@ -51,6 +50,14 @@ export function setUserLoading(id, loading){
   }
 }
 
+export const SET_NEEDS_UPDATE = 'SET_NEEDS_UPDATE'
+export function setNeedsUpdate(needsUpdate){
+  return {
+    type: SET_NEEDS_UPDATE,
+    payload: needsUpdate
+  }
+}
+
 export const GET_FOLLOWING = 'GET_FOLLOWING'
 export function getFollowing(username) {
   return (dispatch, getState) => {
@@ -62,9 +69,13 @@ export function getFollowing(username) {
         return response.json();
       })
       .then(function(following) {
-        return dispatch({
+        dispatch({
           type: GET_FOLLOWING,
           payload: following
+        })
+        dispatch({
+          type: SET_NEEDS_UPDATE,
+          payload: false
         })
       })
   }

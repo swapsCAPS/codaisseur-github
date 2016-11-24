@@ -10,7 +10,7 @@ import GHListItem from '../components/GHListItem'
 
 import './GHList.sass'
 
-import { resetSelectedUser, resetFollowing, getFollowing, sortFollowing } from '../actions/get-following'
+import { setNeedsUpdate, resetSelectedUser, resetFollowing, getFollowing, sortFollowing } from '../actions/get-following'
 
 class GHList extends Component {
   state = {
@@ -41,14 +41,16 @@ class GHList extends Component {
   }
 
   refresh() {
-    const { resetSelectedUser, resetFollowing, getFollowing, currentUser } = this.props
+    const { setNeedsUpdate, resetSelectedUser, resetFollowing, getFollowing, currentUser } = this.props
+    setNeedsUpdate(true)
     resetFollowing()
     resetSelectedUser()
     getFollowing(currentUser.login)
   }
 
   componentWillMount() {
-    const { getFollowing, currentUser } = this.props
+    const { needsUpdate, getFollowing, currentUser } = this.props
+    if(!needsUpdate) return
     getFollowing(currentUser.login)
   }
 
@@ -102,7 +104,8 @@ const mapStateToProps = (state) => {
   return {
     following: state.following,
     currentUser: state.currentUser.github,
+    needsUpdate: state.needsUpdate,
   }
 }
 
-export default connect(mapStateToProps, { resetSelectedUser, resetFollowing, getFollowing, sortFollowing })(GHList)
+export default connect(mapStateToProps, { setNeedsUpdate, resetSelectedUser, resetFollowing, getFollowing, sortFollowing })(GHList)
