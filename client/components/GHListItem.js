@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import InfoWrapper from '../components/InfoWrapper'
 import { date } from '../helpers/properDate'
 
-import { getFullUser, getRepos, getEvents, setSelectedUser } from '../actions/get-following'
+import { setUserLoading, getFullUser, getRepos, getEvents, setSelectedUser } from '../actions/get-following'
 
 import './GHListItem.sass'
 
@@ -38,6 +38,25 @@ const renderRepos = (user) => {
   )
 }
 
+const renderContent = (user) => {
+  if(!user.loading) {
+    return (
+      <div className="info-container">
+        <InfoWrapper type="Name:" info={ user.name ? user.name : 'No name given' }/>
+        <InfoWrapper type="Email:" info={ user.email ? user.email : 'No email given' }/>
+        <InfoWrapper type="Public repos:" info={ user.public_repos }/>
+        <InfoWrapper type="Recent repo:" info={ latestRepo(user) }/>
+        <InfoWrapper type="Recent push:" info={ latestEvent(user) }/>
+      </div>
+    )
+  }
+  return (
+    <div className="info-container">
+      <h1>Loading...</h1>
+    </div>
+  )
+}
+
 class GHListItem extends Component {
   state = {
     value: 1
@@ -45,9 +64,11 @@ class GHListItem extends Component {
 
   componentDidMount() {
     const { user, getFullUser, getRepos, getEvents } = this.props
+    setUserLoading(user.id, true)
     getFullUser(user)
     getRepos(user)
     getEvents(user)
+    setUserLoading(user.id, false)
   }
 
   getAvatar(userid){
@@ -71,13 +92,7 @@ class GHListItem extends Component {
           </a>
         </div>
         <div className="content-container" onClick={this.setUser.bind(this)}>
-          <div className="info-container">
-            <InfoWrapper type="Name:" info={ user.name ? user.name : 'No name given' }/>
-            <InfoWrapper type="Email:" info={ user.email ? user.email : 'No email given' }/>
-            <InfoWrapper type="Public repos:" info={ user.public_repos }/>
-            <InfoWrapper type="Recent repo:" info={ latestRepo(user) }/>
-            <InfoWrapper type="Recent push:" info={ latestEvent(user) }/>
-          </div>
+          { renderContent(user) }
         </div>
       </Paper>
     )

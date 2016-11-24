@@ -43,6 +43,14 @@ export function resetSelectedUser(){
   }
 }
 
+export const SET_USER_LOADING = 'SET_USER_LOADING'
+export function setUserLoading(id, loading){
+  return {
+    type: SET_USER_LOADING,
+    payload: { id, loading }
+  }
+}
+
 export const GET_FOLLOWING = 'GET_FOLLOWING'
 export function getFollowing(username) {
   return (dispatch, getState) => {
