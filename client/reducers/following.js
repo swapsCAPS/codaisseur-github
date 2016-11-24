@@ -65,8 +65,8 @@ const sortByLoginName = (users) => {
 
 const sortByLatestEvent = (users) => {
   return users.sort((a, b) => {
-    if(!a.events || !b.events) return 0
-    if(!a.events[0] || !b.events[0]) return 0
+    if(!a.events || !b.events) return 1
+    if(!a.events[0] || !b.events[0]) return 1
     if(a.events[0].created_at < b.events[0].created_at) return 1
     if(a.events[0].created_at > b.events[0].created_at) return -1
     return 0
