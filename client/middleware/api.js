@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 import feathers from 'feathers-client';
+import authentication from 'feathers-authentication-client';
 
 class API {
   constructor() {
@@ -11,11 +12,10 @@ class API {
       .configure(feathers.socketio(socket))
       .configure(feathers.hooks())
       // Use localStorage to store our login token
-      .configure(feathers.authentication({
+      .configure(authentication({
         storage: window.localStorage,
         cookie: 'codaisseur-github-stroopwafel',
       }));
-    this.token = this.app.get('token')
   }
 
   service(serviceName) {
@@ -23,7 +23,11 @@ class API {
   }
 
   authenticate() {
-    return this.app.authenticate()
+    console.log('authenticate called')
+    debugger
+    return this.app.authenticate({
+        strategy: 'github'
+      })
   }
 
   signOut() {

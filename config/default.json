@@ -4,19 +4,12 @@
   "mongodb": "mongodb://localhost:27017/CodaisseurGithub",
   "public": "../client/",
   "auth": {
-    "idField": "_id",
-    "shouldSetupSuccessRoute": false,
-    "shouldSetupFailureRoute": false,
-    "token": {
-      "secret": "cdnFQSvsERwWU3yNrlrxPlWfJM4+NmA+A4I2jWUPonefFgVW5at8Jm6N79M23xzEWrzAl41Z/6/JQ3mxF45syg=="
-    },
+    "secret": "cdnFQSvsERwWU3yNrlrxPlWfJM4+NmA+A4I2jWUPonefFgVW5at8Jm6N79M23xzEWrzAl41Z/6/JQ3mxF45syg==",
     "local": false,
     "github": {
       "clientID": "CODAISSEUR_GH_CLIENT_ID",
       "clientSecret": "CODAISSEUR_GH_CLIENT_SECRET",
-      "permissions": {
-        "scope": []
-      },
+      "scope": [],
       "cookie": {
         "name": "codaisseur-github-stroopwafel"
       }

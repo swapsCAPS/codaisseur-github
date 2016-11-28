@@ -20,7 +20,7 @@ render(
         <IndexRoute component={Home} />
         <Route path="/detail" component={GHDetail}/>
         <Route path="/auth/failure" component={Home}/>
-        <Route path="/auth/success" component={SuccessAuth}/>
+        <Route path="/auth/github/callback" component={SuccessAuth}/>
         <Route path="*" component={NotFound}/>
       </Route>
     </Router>
