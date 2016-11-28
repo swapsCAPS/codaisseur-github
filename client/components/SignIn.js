@@ -15,9 +15,9 @@ class SignIn extends Component {
   render() {
     return(
       <Paper className="sign-in" zDepth={5}>
-        <h1>Login:</h1>
+        <h1 className="si-header">Login:</h1>
         <RaisedButton
-          className="button"
+          className="si-button"
           label="GitHub"
           labelPosition="before"
           href="/auth/github"
