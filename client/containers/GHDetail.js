@@ -32,12 +32,13 @@ class GHDetail extends Component {
     return (
       <Paper className="main" zDepth={5}>
         <div className="header detail">
-          <RaisedButton
-            className="button"
-            label="Go back"
-            labelPosition="before"
-            onClick={browserHistory.goBack}
-            primary={true} />
+          <div className="button-wrapper">
+            <RaisedButton
+              label="Go back"
+              labelPosition="before"
+              onClick={browserHistory.goBack}
+              primary={true} />
+          </div>
           <h1>{user.login}</h1>
         </div>
         <div className="events">

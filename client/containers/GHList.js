@@ -61,11 +61,12 @@ class GHList extends Component {
     return(
       <Paper zDepth={5} className="main">
         <div className="header">
-          <RaisedButton
-            className="button"
-            label="Refresh"
-            onClick={this.refresh.bind(this)}
-            primary={true} />
+          <div className="button-wrapper">
+            <RaisedButton
+              label="Refresh"
+              onClick={this.refresh.bind(this)}
+              primary={true} />
+          </div>
           <div className="orderby-wrapper">
             <SelectField
               style={{marginRight: 8, width: 138}}
