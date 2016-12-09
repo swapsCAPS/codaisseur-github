@@ -1,4 +1,5 @@
-After working as a bartender for nine years while doing some programming in my spare time I wanted to take it to the next level.
+I had been working as a bartender for nine years and doing some programming in my spare time.
+But wanted to take it to the next level.
 I had learned a lot through Google and some online courses, but learning didn't really go fast enough.
 Furthermore, working and learning all by yourself is just a bit boring...
 When I found Codaisseur it looked quite promising to give me a slingshot into the wonderful world of development.
@@ -6,9 +7,10 @@ And boy did it. Working in teams and learning a lot ridiculously quick. It was a
 But enough about me! Lets talk c0de!
 
 We had an assignment to create a game using a React + Redux frontend, combined with a FeathersJS backend.
-The awesome starter kit we used allowed us to relatively easily set up a game with realtime events communicating to all players.
-It turned out laggy, but cool. I had used a basic html canvas and had not really touched on React and Redux that much.
-Because I wanted to dive in to React + Redux some more I made GitView.
+The awesome starter kit we used allowed us to relatively easily set up a multiplayer game.
+The game turned out laggy when not runnig locally, but still cool.
+Because I had used an html \<canvas> I had not really touched on React and Redux that much.
+I wanted to dive in to React + Redux some more. So for the final project I made GitView.
 
 As many developers do, we used GitHub. GitHub is awesome.
 It is an unmissable collaboration tool for coding projects.
