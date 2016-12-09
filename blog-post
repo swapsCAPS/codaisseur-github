@@ -1,7 +1,7 @@
 After working as a bartender for nine years while doing some programming in my spare time I wanted to take it to the next level.
 I had learned a lot through Google and some online courses, but learning didn't really go fast enough.
 Furthermore, working and learning all by yourself is just a bit boring...
-When I found Codaisseur I thought it would give me a nice slingshot in to the wonderful world of development.
+When I found Codaisseur it looked very promising to give me a slingshot into the wonderful world of development.
 And boy did it. Working in teams and learning a lot ridiculously quick. It was a blast.
 But enough about me! Lets talk c0de!
 
@@ -17,15 +17,12 @@ And that works. Kind of...
 
 [github image]
 
-My problem with it is that it only displays big events, like when a user create a new repo (project) for example.
-This wasn't really enough. I wanted to see more! Especially a better overview of commits (contributions to a project).
+My problem with it is that it only displays big events, like when a user create a new repo for example.
+But I wanted to see more! Especially a better overview of commits.
 When was the latest commit made? By who? How many repos does he or she have? Etc.
-GitHub is nice but it did not give me a nice overview of the data I wanted to see.
-Luckily GitHub provides an API we can use to ask for the data we need and display it as we please.
+Luckily GitHub provides an API we can call to fetch the data we need and display it as we please.
 There is a catch though. To make a lot of calls to the API we need to authenticate ourselves.
 Also not a big problem! We can just use OAuth and use the well known 'login with ...' pattern.
 Oh dear... It turned out that implementing OAuth with Feathers and React was a bit more difficult than I had expected.
 For three days I struggled. I just could not get it to work. I kept hammering on it but I was getting nowhere.
-Until someone said stop. Just stop. Let it rest. Go do something else and then come back to it.
-That was a great tip. I left just left it and started to do some actual development, instead of configuring Feathers for OAuth.
-
+Eventually I just let it rest
