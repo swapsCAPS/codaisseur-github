@@ -1,5 +1,5 @@
-I had been working as a bartender for nine years and doing some programming in my spare time.  
-But wanted to take it to the next level.  
+I had been working as a bartender for nine years and had been doing some programming in my spare time.  
+But after a few years I wanted to take it to the next level.  
 I had learned a lot through Google and some online courses, but learning didn't really go fast enough.  
 Furthermore, working and learning all by yourself is just a bit boring...  
 When I found Codaisseur it looked quite promising to give me a slingshot into the wonderful world of development.  
