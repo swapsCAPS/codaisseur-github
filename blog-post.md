@@ -11,6 +11,7 @@ The awesome starter kit we used allowed us to relatively easily set up a multipl
 The game turned out laggy when not running locally, but still cool.  
 Because I had used an html \<canvas> to make the game, I had not really touched on React and Redux that much.  
 I wanted to dive in to React + Redux some more. So for the final project I made GitView.  
+https://github.com/stofstik/codaisseur-github
 
 As many developers do, we used GitHub of course. GitHub is awesome.  
 It is an unmissable collaboration tool for coding projects.  
@@ -35,8 +36,10 @@ And yes. After letting it rest I managed to get OAuth working.
 Almost... It seems there is a bug in the Feathers framework. It's a long story.  
 GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/344  
 
-`c0de na0 plx! : /`  
-When the list view is loaded we get all the users we're following  
+### Finally Some Code : /  
+(Some irrelevant lines have been removed for brevity)
+
+When the list view is loaded we get all the users we are following  
 ```
 // client/containers/GHList.js
 componentWillMount() {
