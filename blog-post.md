@@ -34,6 +34,7 @@ Working with React and Redux was a bit daunting at first. But after a few epipha
 
 
 When the list view is loaded we get all the users we're following
+```
 // client/containers/GHList.js
 componentWillMount() {
   const { needsUpdate, getFollowing, currentUser } = this.props
@@ -56,9 +57,10 @@ export function getFollowing(username) {
       })
   }
 }
-
+```
 
 The redux store gets populated with the API data and the list view gets updated immediately because we use Redux' mapStateToProps()♥
+```
 // client/containers/GHList.js
 const mapStateToProps = (state) => {
   return {
@@ -81,10 +83,11 @@ render() {
     </div>
   )
 }
-
+```
 
 The initial user objects we get from the API are quite basic.
 We need to make a few more calls to get their full user data, their latest events, and their repos
+```
 // client/components/GHListItem.js
 componentDidMount() {
   const { user, getFullUser, getRepos, getEvents } = this.props
@@ -94,3 +97,4 @@ componentDidMount() {
   getEvents(user)
   setUserLoading(user.id, false)
 }
+```
