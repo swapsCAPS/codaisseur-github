@@ -40,7 +40,7 @@ GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/
 (Some irrelevant lines have been removed for brevity)
 
 When the list view is loaded we get all the users we are following  
-```
+```javascript
 // client/containers/GHList.js
 componentWillMount() {
   const { needsUpdate, getFollowing, currentUser } = this.props
@@ -66,7 +66,7 @@ export function getFollowing(username) {
 ```
 
 The redux store gets populated with the API data and the list view gets updated immediately because we use Redux' mapStateToProps()♥  
-```
+```javascript
 // client/containers/GHList.js
 const mapStateToProps = (state) => {
   return {
@@ -93,7 +93,7 @@ render() {
 
 The initial user objects we get from the API are quite basic.  
 We need to make a few more calls to get their full user data, their latest events, and their repos.  
-```
+```javascript
 // client/components/GHListItem.js
 componentDidMount() {
   const { user, getFullUser, getRepos, getEvents } = this.props
