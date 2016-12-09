@@ -9,7 +9,7 @@ But enough about me! Lets talk c0de!
 We had an assignment to create a game using a React + Redux frontend, combined with a FeathersJS backend.  
 The awesome starter kit we used allowed us to relatively easily set up a multiplayer game.  
 The game turned out laggy when not running locally, but still cool.  
-Because I had used an html \<canvas> I had not really touched on React and Redux that much.  
+Because I had used an html \<canvas> to make the game, I had not really touched on React and Redux that much.  
 I wanted to dive in to React + Redux some more. So for the final project I made GitView.  
 
 As many developers do, we used GitHub of course. GitHub is awesome.  
