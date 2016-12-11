@@ -13,7 +13,6 @@ const EXPANDED = 200
 const NORMAL_DEPTH = 1
 const EXPANDED_DEPTH = 5
 
-
 class TinyListItem extends Component {
   state = {
     expanded: false,
@@ -45,9 +44,11 @@ class TinyListItem extends Component {
   }
 
   expand() {
-    console.log('expand')
+    // We set the height to the match the maount of commits
     const height = NORMAL + 4 + (19 * this.props.event.payload.commits.length)
+    // But we only allow a maximum of 200px
     const calculatedHeight = height >= 200 ? 200 : height
+    // Then toggle
     if(this.state.expanded === false){
       this.setState({ height: calculatedHeight, depth: EXPANDED_DEPTH, expanded: true })
     }
