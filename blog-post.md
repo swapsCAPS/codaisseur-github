@@ -37,14 +37,13 @@ Almost... It seems there is a bug in the Feathers framework. It's a long story.
 GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/344  
 
 ### Finally Some Code : /  
-(Some irrelevant lines have been removed for brevity)
+(Some lines have been removed for brevity)
 
 When the list view is loaded we get all the users we are following  
 ```javascript
 // client/containers/GHList.js
 componentWillMount() {
-  const { needsUpdate, getFollowing, currentUser } = this.props
-  if(!needsUpdate) return
+  const { getFollowing, currentUser } = this.props
   getFollowing(currentUser.login)
 }
 
@@ -65,7 +64,7 @@ export function getFollowing(username) {
 }
 ```
 
-The redux store gets populated with the API data and the list view gets updated immediately because we use Redux' mapStateToProps()♥  
+The redux store gets populated with the API data and the list view gets updated immediately because we use Redux' mapStateToProps() ♥  
 ```javascript
 // client/containers/GHList.js
 const mapStateToProps = (state) => {
@@ -104,3 +103,8 @@ componentDidMount() {
   setUserLoading(user.id, false)
 }
 ```
+
+Cool! When all the API calls finish we have all the data we need in our Redux store.  
+We add a user's repos and events to the already existing user object.
+This is a quite expensive operation and it might be better to have a top level store for them.
+Then we filter out the data we need at runtime.
