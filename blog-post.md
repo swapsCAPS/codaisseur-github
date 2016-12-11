@@ -20,7 +20,7 @@ And that works. Kind of...
 
 [github image]  
 
-My problem with it is that it only displays big events, like when a user create a new repo for example.  
+My problem with it is that it only displays big events, like when a user creates a new repo for example.  
 But I wanted to see more! Especially a better overview of commits and when they were made.  
 Luckily GitHub provides an API we can call to fetch data and display it as we please.  
 There is a catch though. To make a lot of calls to the API we need to authenticate ourselves.  
