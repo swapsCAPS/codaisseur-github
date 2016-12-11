@@ -121,15 +121,54 @@ export default (state = [], { type, payload } = {}) => {
       return state
   }
 }
-
 ```
+
 This is quite an expensive operation. It might be better to have a top level store for both.  
-And then filter out the data we need when we want to display the detail view for a user.  
+And then filter out the data we need for a user at runtime.  
 
-For now, this works. We can sort on recent activity to see who has been busy.
-[ sorted list image ]
-And click on an item to go to a users detail view
+For now though, this works. 
+We can sort on recent activity to see who has been busy lately. : )  
 
-[ detail view ]
+[ sorted list image ]  
 
+And click on an item to go to a users detail view  
 
+[ detail view ]  
+
+Then we can expand a push event to see some of the user's commits  
+When expanding, we just set a new height for the React component and it will make automatially use a nice transition animation. Awesome!
+```javascript
+const NORMAL = 32
+const NORMAL_DEPTH = 1
+const EXPANDED_DEPTH = 5
+
+class TinyListItem extends Component {
+  state = {
+    expanded: false,
+    height: NORMAL,
+    depth: NORMAL_DEPTH
+  }
+  expand() {
+    // We set the height to the match the amount of commits
+    const height = NORMAL + 4 + (19 * this.props.event.payload.commits.length)
+    // But we only allow a maximum of 200px
+    const calculatedHeight = height >= 200 ? 200 : height
+    // Then toggle
+    if(this.state.expanded === false){
+      this.setState({ height: calculatedHeight, depth: EXPANDED_DEPTH, expanded: true })
+    }
+    if(this.state.expanded === true){
+      this.setState({ height: NORMAL, depth: NORMAL_DEPTH, expanded: false })
+    }
+  }
+  render(){
+    return (
+      // Then we can set the height using inline styling (And zDepth for a nice shaddow effect from MaterialUI)
+      <Paper style={{height: this.state.height}} className="tiny-list-item" zDepth={this.state.depth}>
+        // And render the content...
+        { this.state.expanded ? this.renderContent(event) : null }
+      </Paper>
+    )
+  }
+}
+```
