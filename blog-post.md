@@ -90,6 +90,8 @@ render() {
 }
 ```
 
+[ list view image ]
+
 The initial user objects we get from the API are quite basic.  
 We need to make a few more calls to get their full user data, their latest events, and their repos.  
 ```javascript
@@ -103,8 +105,31 @@ componentDidMount() {
   setUserLoading(user.id, false)
 }
 ```
-
 Cool! When all the API calls finish we have all the data we need in our Redux store.  
-We add a user's repos and events to the already existing user object.
-This is a quite expensive operation and it might be better to have a top level store for them.
-Then we filter out the data we need at runtime.
+
+When getting the additional data we add it to the already existing user object.  
+```javascript
+// client/reducers/following.js
+export default (state = [], { type, payload } = {}) => {
+  switch(type) {
+    case GET_REPOS:
+      return state.map((user) => {
+        if(user.id === payload.user.id) return Object.assign({}, user, { repos: payload.repositories })
+        return user
+      })
+    default:
+      return state
+  }
+}
+
+```
+This is quite an expensive operation. It might be better to have a top level store for both.  
+And then filter out the data we need when we want to display the detail view for a user.  
+
+For now, this works. We can sort on recent activity to see who has been busy.
+[ sorted list image ]
+And click on an item to go to a users detail view
+
+[ detail view ]
+
+
