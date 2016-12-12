@@ -1,4 +1,5 @@
 Hi! My name is Dan, I'm from '89 and have been born and raised in Amsterdam.  
+
 I had been working as a bartender for nine years and had been doing some programming in my spare time.  
 But after a few years I wanted to take it to the next level.  
 I had learned a lot through Google and some online courses, but learning didn't really go fast enough.  
@@ -188,7 +189,7 @@ class TinyListItem extends Component {
 ```
 
 That's about it! For the full code, check the GitHub repository!  
-It has been an awesome learning excersize and I think it touched nicely on some of the core aspects of React and Redux.  
+It has been an awesome learning exercise and I think it touched nicely on some of the core aspects of React and Redux.  
 We have used the Redux store to persist some data and a ReactComponent's state to manipulate the size and styling of a list-item.  
 Also we have learned how difficult it can be to properly configure something.  
 Reading documentation for hours and not getting anywhere can be really frustrating.  
