@@ -1,4 +1,4 @@
-Hi! My name is Dan, I'm from '89 and have been born and raised in Amsterdam.
+Hi! My name is Dan, I'm from '89 and have been born and raised in Amsterdam.  
 I had been working as a bartender for nine years and had been doing some programming in my spare time.  
 But after a few years I wanted to take it to the next level.  
 I had learned a lot through Google and some online courses, but learning didn't really go fast enough.  
