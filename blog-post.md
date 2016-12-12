@@ -13,14 +13,15 @@ The awesome starter kit we used allowed us to relatively easily set up a multipl
 The game turned out laggy when not running locally, but still ended up pretty cool.  
 Because I had used an html \<canvas> to make the game, I had not really touched on React and Redux that much.  
 I wanted to dive in to React + Redux some more. So for the final project I made GitView.  
-https://github.com/stofstik/codaisseur-github  
 
 Throughout the traineeship we used GitHub of course. GitHub is awesome.  
 It is an unmissable collaboration tool for team coding projects.  
-What's also pretty cool is that you can follow users. Just like you would on a social network.  
-And that works. Kind of...  
 
-[github image]  
+What's also pretty cool is that you can follow users. Just like you would on a social network.
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/github-following.png" alt="screenshot" width="650px"/>
+
+And that works. Kind of...
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/github-overview.png" alt="screenshot" width="650px"/>
 
 The problem with it is that it only displays big events, like when a user creates a new repo for example.  
 I wanted to see more! Especially a better overview of a user's commits and when they were made.  
@@ -106,7 +107,7 @@ render() {
 }
 ```
 
-[ list view image ]
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/list-view-not-loaded.png" alt="screenshot" width="650px"/>
 
 The initial user objects we get from the API are quite basic.  
 We need to make a few more calls to get their full user data, their latest events, and their repos.
@@ -121,7 +122,9 @@ componentDidMount() {
   setUserLoading(user.id, false)
 }
 ```
+
 Cool! When all the API calls finish we have all the data we need in our Redux store.  
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/list-view-loaded.png" alt="screenshot" width="650px"/>
 
 When getting the additional data we add it to the already existing user object.
 ```javascript
@@ -142,14 +145,12 @@ This is quite an expensive operation. It might be better to have a top level sto
 And then filter out the data we need for a user at runtime.  
 
 For now though, this works.  
-Lets sort on recent activity to see who has been busy lately. : )  
-[ sorted list image ]  
-
+Lets order by 'Latest event' to see who has been busy recently.  
 And click on an item to go to a users detail view  
-[ detail view ]  
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/detail.png" alt="screenshot" width="650px"/>
 
 Then we can expand a push event to see some of the user's commits  
-[ detail view with expanded item ]  
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/detail-expanded.png" alt="screenshot" width="650px"/>
 
 When expanding, we only set a new height in the component state and React will make automatially use a nice transition animation. Awesome!
 ```javascript
@@ -188,12 +189,16 @@ class TinyListItem extends Component {
 }
 ```
 
-That's about it! For the full code, check the GitHub repository!  
 It has been an awesome learning exercise and I think it touched nicely on some of the core aspects of React and Redux.  
 We have used the Redux store to persist some data and a ReactComponent's state to manipulate the size and styling of a list-item.  
 Also we have learned how difficult it can be to properly configure something.  
 Reading documentation for hours and not getting anywhere can be really frustrating.  
 I am certain there is so much more to learn here though.  
 It demonstrates that as a developer, you should never stop learning.  
+That's about it! To keep track of your own friends and for the full code, check the GitHub repository!  
+https://github.com/stofstik/codaisseur-github  
 
 Cheers!
+
+
+Daniel
