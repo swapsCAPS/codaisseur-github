@@ -41,9 +41,7 @@ And yes. After letting it rest for a while I did manage to get OAuth working. :D
 Well, Almost... It seems there is a bug in the Feathers framework. It's a long story.  
 GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/344  
 
-### Finally Some Code : /
-(Some lines have been removed for brevity)  
-
+### Finally Some Code! (Some lines have been removed for brevity)  
 When the list view is loaded we get all the users we are following.  
 ```javascript
 // client/containers/GHList.js
