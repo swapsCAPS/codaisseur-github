@@ -30,14 +30,14 @@ There is a catch though. To make a lot of calls to the API we need to authentica
 No problem! We can just use OAuth and use the well known 'Login with ...' pattern.  
 Oh dear...  
 It turned out that implementing OAuth with Feathers and React was a bit more complicated than I had expected.  
-For three days I struggled. I just could not get it to work. I kept hammering on it but I was getting nowhere.  
+For three days I struggled. I just could not get it to work. I kept hammering on it, but I was getting nowhere.  
 After a great tip from a teacher, I let it rest and started doing some actual coding.  
 GitHub allows a few calls to their API without authenticating, so we could at least get some work done.  
 
 I decided to use a simple list-detail pattern.  
 A list with all the users I'm following with some basic user info. And a detail view with an overview of their latest commits.  
 Working with React and Redux was daunting at first. But after a few epiphanies it got easier and easier.  
-And yes. After letting it rest for a while I did manage to get OAuth working. :D  
+And yes. After letting it rest for a while I did manage to get OAuth working. : D  
 Well, Almost... It seems there is a bug in the Feathers framework. It's a long story.  
 GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/344  
 
@@ -141,6 +141,7 @@ export default (state = [], { type, payload } = {}) => {
 ```
 This is quite an expensive operation. It might be better to have a top level store for both.  
 And then filter out the data we need for a user at runtime.  
+We could also load the data from the API when displaying a user's detail view.  
 
 For now though, this works.  
 Lets order by 'Latest event' to see who has been busy recently. And check out a user's detail view  
