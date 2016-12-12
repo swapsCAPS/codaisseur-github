@@ -187,6 +187,7 @@ class TinyListItem extends Component {
 }
 ```
 
+We now have a nice way to keep track of the users we're following and the commits they're making!  
 It has been an awesome learning exercise and I think it touched nicely on some of the core aspects of React and Redux.  
 We have used the Redux store to persist some data and a ReactComponent's state to manipulate the size and styling of a list-item.  
 Also, we have learned how difficult it can be to properly configure something.  
