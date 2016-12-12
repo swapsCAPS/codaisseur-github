@@ -9,7 +9,7 @@ But enough about me! Lets talk about some c0de!
 
 We had an assignment to create a game using a React + Redux frontend, combined with a FeathersJS backend.  
 The awesome starter kit we used allowed us to relatively easily set up a multiplayer game.  
-The game turned out laggy when not running locally, but still cool.  
+The game turned out laggy when not running locally, but still ended up pretty cool.  
 Because I had used an html \<canvas> to make the game, I had not really touched on React and Redux that much.  
 I wanted to dive in to React + Redux some more. So for the final project I made GitView.  
 https://github.com/stofstik/codaisseur-github  
@@ -30,16 +30,16 @@ Oh dear...
 It turned out that implementing OAuth with Feathers and React was a bit more complicated than I had expected.  
 For three days I struggled. I just could not get it to work. I kept hammering on it but I was getting nowhere.  
 After a great tip from a teacher, I let it rest and started doing some actual coding.  
-GitHub allows a few calls to their API without logging in, so we could at least get some work done.  
+GitHub allows a few calls to their API without authenticating, so we could at least get some work done.  
 
 I decided to use a simple list-detail pattern.  
 A list with all the users I'm following with some basic user info. And a detail view with an overview of their latest commits.  
-Working with React and Redux was a bit daunting at first. But after a few epiphanies it got easier and easier.  
+Working with React and Redux was daunting at first. But after a few epiphanies it got easier and easier.  
 And yes. After letting it rest for a while I did manage to get OAuth working. :D  
 Well, Almost... It seems there is a bug in the Feathers framework. It's a long story.  
 GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/344  
 
-### Finally Some Code : /  
+### Finally Some Code : /
 (Some lines have been removed for brevity)  
 
 When the list view is loaded we get all the users we are following.
