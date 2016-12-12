@@ -68,7 +68,7 @@ export function getFollowing(username) {
 }
 ```
 
-The redux store gets populated with data from the API and the list view gets updated immediately because we use Redux' mapStateToProps() ♥
+The Redux store gets populated with data from the API and the list view gets updated immediately because we use Redux' mapStateToProps() ♥
 ```javascript
 // client/reducers/following.js
 export default (state = [], { type, payload } = {}) => {
