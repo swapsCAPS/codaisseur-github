@@ -192,7 +192,7 @@ It has been an awesome learning exercise and I think it touched nicely on some o
 We have used the Redux store to persist some data and a ReactComponent's state to manipulate the size and styling of a list-item.  
 Also, we have learned how difficult it can be to properly configure something.  
 Reading documentation for hours and not getting anywhere can be really frustrating.  
-I am certain there is so much more to learn here though. There is definitely room for improvement as well.  
+I am certain there is so much more to learn about React and Redux though. There is definitely room for improvement as well.  
 It demonstrates that as a developer, you should never stop learning.  
 
 That's about it! To keep track of your own friends and for the full code, check the GitHub repository!  
