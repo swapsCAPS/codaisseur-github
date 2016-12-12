@@ -17,10 +17,10 @@ I wanted to dive in to React + Redux some more. So for the final project I made 
 Throughout the traineeship we used GitHub of course. GitHub is awesome.  
 It is an unmissable collaboration tool for team coding projects.  
 
-What's also pretty cool is that you can follow users. Just like you would on a social network.
-<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/github-following.png" alt="screenshot" width="650px"/>
+What's also pretty cool is that you can follow users. Just like you would on a social network.  
+<img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/github-following.png" alt="screenshot" width="650px"/>  
 
-And that works. Kind of...
+And that works. Kind of...  
 <img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/github-overview.png" alt="screenshot" width="650px"/>
 
 The problem with it is that it only displays big events, like when a user creates a new repo for example.  
@@ -107,9 +107,9 @@ render() {
 }
 ```
 
+The initial user objects we get from the API are quite basic.  
 <img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/list-view-not-loaded.png" alt="screenshot" width="650px"/>
 
-The initial user objects we get from the API are quite basic.  
 We need to make a few more calls to get their full user data, their latest events, and their repos.
 ```javascript
 // client/components/GHListItem.js
@@ -145,11 +145,10 @@ This is quite an expensive operation. It might be better to have a top level sto
 And then filter out the data we need for a user at runtime.  
 
 For now though, this works.  
-Lets order by 'Latest event' to see who has been busy recently.  
-And click on an item to go to a users detail view  
+Lets order by 'Latest event' to see who has been busy recently. And check out a user's detail view  
 <img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/detail.png" alt="screenshot" width="650px"/>
 
-Then we can expand a push event to see some of the user's commits  
+We can expand a list-item to see the commits of this GitHub event
 <img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/detail-expanded.png" alt="screenshot" width="650px"/>
 
 When expanding, we only set a new height in the component state and React will make automatially use a nice transition animation. Awesome!
