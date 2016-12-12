@@ -105,7 +105,7 @@ render() {
 }
 ```
 
-The initial user objects we get from the API are quite basic.  
+The initial user objects we get from the API are quite basic. (username, avatar url, etc.)  
 <img src="https://github.com/stofstik/codaisseur-github/blob/master/.blog-post-images/list-view-not-loaded.png" alt="screenshot" width="650px"/>
 
 We need to make a few more calls to get their full user data, their latest events, and their repos.
@@ -188,10 +188,11 @@ class TinyListItem extends Component {
 
 It has been an awesome learning exercise and I think it touched nicely on some of the core aspects of React and Redux.  
 We have used the Redux store to persist some data and a ReactComponent's state to manipulate the size and styling of a list-item.  
-Also we have learned how difficult it can be to properly configure something.  
+Also, we have learned how difficult it can be to properly configure something.  
 Reading documentation for hours and not getting anywhere can be really frustrating.  
-I am certain there is so much more to learn here though.  
+I am certain there is so much more to learn here though. There is definitely room for improvement as well.  
 It demonstrates that as a developer, you should never stop learning.  
+
 That's about it! To keep track of your own friends and for the full code, check the GitHub repository!  
 https://github.com/stofstik/codaisseur-github  
 
