@@ -27,7 +27,7 @@ The problem with it is that it only displays big events, like when a user create
 I wanted to see more! Especially a better overview of a user's commits and when they were made.  
 GitHub provides an API we can call to fetch this kind of data and display it in any way we please.  
 There is a catch though. To make a lot of calls to the API we need to authenticate ourselves.  
-Also not a big problem! We can just use OAuth and use the well known 'Login with ...' pattern.  
+No problem! We can just use OAuth and use the well known 'Login with ...' pattern.  
 Oh dear...  
 It turned out that implementing OAuth with Feathers and React was a bit more complicated than I had expected.  
 For three days I struggled. I just could not get it to work. I kept hammering on it but I was getting nowhere.  
@@ -44,7 +44,7 @@ GitHub issue here: https://github.com/feathersjs/feathers-authentication/issues/
 ### Finally Some Code : /
 (Some lines have been removed for brevity)  
 
-When the list view is loaded we get all the users we are following.
+When the list view is loaded we get all the users we are following.  
 ```javascript
 // client/containers/GHList.js
 componentWillMount() {
