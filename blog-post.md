@@ -195,7 +195,8 @@ Reading documentation for hours and not getting anywhere can be really frustrati
 I am certain there is so much more to learn about React and Redux though. There is definitely room for improvement as well.  
 It demonstrates that as a developer, you should never stop learning.  
 
-That's about it! To keep track of your own friends and for the full code, check the GitHub repository!  
+That's about it! To keep track of your own friends and for the full code, check the links
+http://codaisseur-github.codaisseur.cloud/
 https://github.com/stofstik/codaisseur-github  
 
 Cheers!
