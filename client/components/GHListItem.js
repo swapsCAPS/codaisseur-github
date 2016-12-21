@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import InfoWrapper from '../components/InfoWrapper'
 import { date } from '../helpers/properDate'
 
-import { setUserLoading, getFullUser, getRepos, getEvents, setSelectedUser } from '../actions/get-following'
+import { getAllUserData, setSelectedUser } from '../actions/get-following'
 
 import './GHListItem.sass'
 
@@ -63,14 +63,11 @@ class GHListItem extends Component {
   }
 
   componentDidMount() {
-    const { user, getFullUser, getRepos, getEvents } = this.props
+    const { user, getAllUserData } = this.props
     if(user.events && user.repos) return
     if(user.events > 0 && user.repos > 0) return
-    setUserLoading(user.id, true)
-    getFullUser(user)
-    getRepos(user)
-    getEvents(user)
-    setUserLoading(user.id, false)
+    // Get all extra data for the user
+    getAllUserData(user)
   }
 
   getAvatar(userid){
@@ -107,4 +104,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(null, { getFullUser, getRepos, getEvents, setSelectedUser })(GHListItem)
+export default connect(null, { getAllUserData, setSelectedUser })(GHListItem)

@@ -81,6 +81,21 @@ export function getFollowing(username) {
   }
 }
 
+export function getAllUserData(user) {
+  return (dispatch) => { 
+    // Set user loading
+    Promise.all([
+      dispatch(setUserLoading(user.id, true)),
+      dispatch(getFullUser(user)),
+      dispatch(getRepos(user)),
+      dispatch(getEvents(user))
+    ]).then(() => {
+      // All data has been loaded
+      dispatch(setUserLoading(user.id, false))
+    })
+  }
+}
+
 export const GET_FULL_USER = 'GET_FULL_USER'
 export function getFullUser(user) {
   return (dispatch, getState) => {
