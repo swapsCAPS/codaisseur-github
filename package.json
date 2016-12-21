@@ -1,7 +1,7 @@
 {
   "name": "CodaisseurGithub",
   "description": "A quick overview of your beloved Github friends",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "",
   "main": "src/",
   "keywords": [
