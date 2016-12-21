@@ -138,12 +138,27 @@ Cool! When all the API calls finish we have all the data we need in our Redux st
 
 When getting the additional data we add it to the already existing user object.
 ```javascript
+// client/actions/get-following.js
+export const GET_REPOS = 'GET_REPOS'
+export function getRepos(user) {
+  return (dispatch, getState) => {
+    return fetch(`${user.repos_url}`)
+      .then(function(response) {
+        dispatch({
+          type: GET_REPOS,
+          payload: { response.json(), user }
+        })
+      })
+  }
+}
+
 // client/reducers/following.js
 export default (state = [], { type, payload } = {}) => {
   switch(type) {
     ...
     case GET_REPOS:
       return state.map((user) => {
+        // Add the response data to the user
         if(user.id === payload.user.id) return Object.assign({}, user, { repos: payload.repositories })
         return user
       })
