@@ -58,16 +58,20 @@ export function setNeedsUpdate(needsUpdate){
   }
 }
 
+function apiCall(url) {
+  return fetch(url)
+    .then(function(response) {
+      if (response.status >= 400) {
+        throw new error('bad response from server');
+      }
+      return response.json();
+    })
+}
+
 export const GET_FOLLOWING = 'GET_FOLLOWING'
 export function getFollowing(username) {
   return (dispatch, getState) => {
-    fetch(`${URL}/users/${username}/following${accessToken(getState().currentUser)}`)
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
+    apiCall(`${URL}/users/${username}/following${accessToken(getState().currentUser)}`)
       .then(function(following) {
         dispatch({
           type: GET_FOLLOWING,
@@ -98,23 +102,12 @@ export function getAllUserData(user) {
 export const GET_FULL_USER = 'GET_FULL_USER'
 export function getFullUser(user) {
   return (dispatch, getState) => {
-    dispatch(setUserLoading(user.id, true))
-    return fetch(`${user.url}${accessToken(getState().currentUser)}`)
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
+    apiCall(`${user.url}${accessToken(getState().currentUser)}`)
       .then(function(fullUser) {
         dispatch({
           type: GET_FULL_USER,
-          payload: {
-            user,
-            fullUser
-          }
+          payload: { user, fullUser }
         })
-        dispatch(setUserLoading(user.id, false))
       });
   }
 }
@@ -122,13 +115,7 @@ export function getFullUser(user) {
 export const GET_REPOS = 'GET_REPOS'
 export function getRepos(user) {
   return (dispatch, getState) => {
-    return fetch(`${user.repos_url}${accessToken(getState().currentUser)}${perPage(200)}`)
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
+    apiCall(`${user.repos_url}${accessToken(getState().currentUser)}${perPage(200)}`)
       .then(function(repositories) {
         dispatch({
           type: GET_REPOS,
@@ -141,13 +128,7 @@ export function getRepos(user) {
 export const GET_EVENTS = 'GET_EVENTS'
 export function getEvents(user) {
   return (dispatch, getState) => {
-    return fetch(`${user.url}/events${accessToken(getState().currentUser)}`)
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
+    apiCall(`${user.url}/events${accessToken(getState().currentUser)}`)
       .then(function(events) {
         dispatch({
           type: GET_EVENTS,
@@ -160,13 +141,7 @@ export function getEvents(user) {
 export const GO_TO_COMMIT = 'GO_TO_COMMIT'
 export function goToCommit(commitURL) {
   return (dispatch, getState) => {
-    return fetch(commitURL)
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new error('bad response from server');
-        }
-        return response.json();
-      })
+    apiCall(commitURL)
       .then(function(commit) {
         console.log(commit.html_url)
         window.open(commit.html_url)
