@@ -112,12 +112,25 @@ We need to make a few more calls to get their full user data, their latest event
 ```javascript
 // client/components/GHListItem.js
 componentDidMount() {
-  const { user, getFullUser, getRepos, getEvents } = this.props
-  setUserLoading(user.id, true)
-  getFullUser(user)
-  getRepos(user)
-  getEvents(user)
-  setUserLoading(user.id, false)
+  const { user, getAllUserData } = this.props
+  // Get all extra data for the user
+  getAllUserData(user)
+}
+
+// client/actions/get-following.js
+export function getAllUserData(user) {
+  return (dispatch) => { 
+    // Set user loading
+    Promise.all([
+      dispatch(setUserLoading(user.id, true)),
+      dispatch(getFullUser(user)),
+      dispatch(getRepos(user)),
+      dispatch(getEvents(user))
+    ]).then(() => {
+      // All data has been loaded
+      dispatch(setUserLoading(user.id, false))
+    })
+  }
 }
 ```
 
