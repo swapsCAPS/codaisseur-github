@@ -83,7 +83,6 @@ export function getFollowing(username) {
 
 export function getAllUserData(user) {
   return (dispatch) => { 
-    // Set user loading
     Promise.all([
       dispatch(setUserLoading(user.id, true)),
       dispatch(getFullUser(user)),
