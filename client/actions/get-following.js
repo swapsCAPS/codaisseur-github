@@ -85,56 +85,35 @@ export function getFollowing(username) {
   }
 }
 
-export function getAllUserData(user) {
-  return (dispatch) => { 
-    Promise.all([
-      dispatch(setUserLoading(user.id, true)),
-      dispatch(getFullUser(user)),
-      dispatch(getRepos(user)),
-      dispatch(getEvents(user))
-    ]).then(() => {
-      // All data has been loaded
-      dispatch(setUserLoading(user.id, false))
-    })
-  }
-}
-
 export const GET_FULL_USER = 'GET_FULL_USER'
-export function getFullUser(user) {
-  return (dispatch, getState) => {
-    apiCall(`${user.url}${accessToken(getState().currentUser)}`)
-      .then(function(fullUser) {
-        dispatch({
-          type: GET_FULL_USER,
-          payload: { user, fullUser }
-        })
-      });
-  }
-}
-
 export const GET_REPOS = 'GET_REPOS'
-export function getRepos(user) {
-  return (dispatch, getState) => {
-    apiCall(`${user.repos_url}${accessToken(getState().currentUser)}${perPage(200)}`)
-      .then(function(repositories) {
-        dispatch({
-          type: GET_REPOS,
-          payload: { repositories, user }
-        })
-      })
-  }
-}
-
 export const GET_EVENTS = 'GET_EVENTS'
-export function getEvents(user) {
-  return (dispatch, getState) => {
-    apiCall(`${user.url}/events${accessToken(getState().currentUser)}`)
-      .then(function(events) {
-        dispatch({
-          type: GET_EVENTS,
-          payload: { events, user }
-        })
+export function getAllUserData(user) {
+  return (dispatch, getState) => { 
+    dispatch(setUserLoading(user.id, true)),
+    Promise.all([
+      apiCall(`${user.url}${accessToken(getState().currentUser)}`),
+      apiCall(`${user.repos_url}${accessToken(getState().currentUser)}${perPage(200)}`),
+      apiCall(`${user.url}/events${accessToken(getState().currentUser)}`)
+    ]).then((results) => {
+      dispatch({
+        type: GET_FULL_USER,
+        payload: { user, fullUser: results[0] }
       })
+      dispatch({
+ 
+        type: GET_REPOS,
+        payload: { user, repositories: results[1] }
+      })
+      dispatch({
+        type: GET_EVENTS,
+        payload: { user, events: results[2] }
+      })
+    }).then(() => {
+      dispatch(setUserLoading(user.id, false))
+    }).catch((err) => {
+      console.log('Error loading user:', err)
+    })
   }
 }
 
